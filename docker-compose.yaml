@@ -4,8 +4,6 @@ version: '3.9'
 # The containers that compose the project
 services:
   db:
-    env_file:
-      - .env.test
     image: postgres:13
     restart: always
     container_name: integration-tests-prisma
