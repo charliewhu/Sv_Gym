@@ -6,7 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"test": "pnpm docker:up && pnpm prisma migrate deploy && playwright test",
+		"test": "pnpm docker:up && pnpm prisma migrate reset --force && playwright test",
 		"test:close": "pnpm docker:up && pnpm prisma migrate deploy && playwright test && pnpm docker:down",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
