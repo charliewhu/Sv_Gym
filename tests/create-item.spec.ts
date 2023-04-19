@@ -21,6 +21,7 @@ test('creating an item', async ({ page }) => {
 
 	// add exercises
 	const exerciseDropdown = page.getByRole('listitem');
+	await expect(exerciseDropdown).toBeVisible();
 	exerciseDropdown.getByText(exerciseName);
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
