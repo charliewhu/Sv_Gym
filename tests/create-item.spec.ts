@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { prisma } from '../src/lib/server/prisma';
+import { prisma } from '../src/lib/server/prisma.ts';
 
 test('creating an item', async ({ page }) => {
 	// variables
