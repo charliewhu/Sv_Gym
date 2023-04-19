@@ -16,7 +16,7 @@ test('creating an item', async ({ page }) => {
 	await page.goto('/');
 	await page.locator('button[aria-label="startWorkout"]').click();
 	await expect(page).toHaveURL('/workouts/1');
-	const workouts = await prisma.workouts.findMany();
+	const workouts = await prisma.workout.findMany();
 	await expect(workouts.length).toEqual(1);
 
 	// add exercises
