@@ -1,3 +1,3 @@
-<form action="/workouts/1">
+<form method="POST" action="">
 	<button type="submit" aria-label="startWorkout" class="btn"> Start Workout </button>
 </form>
