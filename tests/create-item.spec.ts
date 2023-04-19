@@ -17,16 +17,17 @@ test('creating an item', async ({ page }) => {
 	const workouts = await prisma.workout.findMany();
 	expect(workouts.length).toEqual(1);
 
-	// add exercises
-	const exerciseDropdown = page.locator('select');
-	await expect(exerciseDropdown).toBeVisible();
+	// assert exercise dropdown is visible
+	const exerciseDropdown = page.getByLabel('exerciseDropdown');
 
-	// select list options should include all exercise items
+	// select-list options should include all exercise items
 	const exercises = await prisma.exercise.findMany();
-	const innerDropdown = await exerciseDropdown.allTextContents();
-	expect(innerDropdown.length).toEqual(exercises.length);
-	await exerciseDropdown.selectOption(exerciseNames[0]);
+	const dropdownOptions = page.getByTestId('exerciseDropdownItem');
+	console.log(dropdownOptions);
+	expect(await dropdownOptions.count()).toEqual(exercises.length);
 
+	// add exercise
+	await exerciseDropdown.selectOption(exerciseNames[0]);
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
 	await expect(page.getByTestId('exerciseListItem')).toHaveText(exerciseNames[0]);
