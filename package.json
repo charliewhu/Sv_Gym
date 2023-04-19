@@ -6,12 +6,14 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"test": "playwright test",
+		"test": "pnpm docker:up && pnpm prisma migrate deploy && playwright test && pnpm docker:down",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"docker:up": "docker-compose up -d",
+		"docker:down": "docker-compose down"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.32.3",
