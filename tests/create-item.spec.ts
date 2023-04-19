@@ -3,13 +3,11 @@ import { prisma } from '../src/lib/server/prisma.ts';
 
 test('creating an item', async ({ page }) => {
 	// variables
-	const exerciseName = 'Exercise 1';
+	const exerciseNames = ['Exercise 1', 'Exercise 2'];
 
 	// setup
-	await prisma.exercise.create({
-		data: {
-			name: exerciseName
-		}
+	await prisma.exercise.createMany({
+		data: [{ name: exerciseNames[0] }, { name: exerciseNames[1] }]
 	});
 
 	// start a workout
@@ -20,12 +18,18 @@ test('creating an item', async ({ page }) => {
 	expect(workouts.length).toEqual(1);
 
 	// add exercises
-	const exerciseDropdown = page.getByRole('listitem');
+	const exerciseDropdown = page.locator('select');
 	await expect(exerciseDropdown).toBeVisible();
-	exerciseDropdown.getByText(exerciseName);
+
+	// select list options should include all exercise items
+	const exercises = await prisma.exercise.findMany();
+	const innerDropdown = await exerciseDropdown.allTextContents();
+	expect(innerDropdown.length).toEqual(exercises.length);
+	await exerciseDropdown.selectOption(exerciseNames[0]);
+
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
-	await expect(page.getByTestId('exerciseListItem')).toHaveText(exerciseName);
+	await expect(page.getByTestId('exerciseListItem')).toHaveText(exerciseNames[0]);
 
 	// goto exercises
 
