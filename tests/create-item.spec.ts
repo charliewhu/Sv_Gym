@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from './base.ts';
 import { prisma } from '../src/lib/server/prisma.ts';
 
 test('creating an item', async ({ page }) => {
@@ -20,7 +20,7 @@ test('creating an item', async ({ page }) => {
 	expect(workouts.length).toEqual(1);
 
 	// add exercises
-	const exerciseDropdown = await page.getByRole('listitem');
+	const exerciseDropdown = page.getByRole('listitem');
 	exerciseDropdown.getByText(exerciseName);
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
