@@ -13,6 +13,7 @@ test('creating an item', async ({ page }) => {
 	});
 
 	// start a workout
+	await page.goto('/');
 	await page.locator('button[aria-label="startWorkout"]').click();
 	await expect(page).toHaveURL('/workouts/1');
 
