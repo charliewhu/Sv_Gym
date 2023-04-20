@@ -33,6 +33,8 @@ test('creating an item', async ({ page }) => {
 	await expect(page.getByTestId('exerciseListItem')).toHaveText(exerciseNames[0]);
 
 	// goto exercises
+	await page.getByTestId('exerciseListitem').click();
+	await expect(page).toHaveURL('/workouts/1/exercises/1');
 
 	// add sets to exercise
 });
