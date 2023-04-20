@@ -27,6 +27,7 @@ test('creating an item', async ({ page }) => {
 	expect(await dropdownOptions.count()).toEqual(exercises.length);
 
 	// add exercise
+	await expect(page.getByTestId('exerciseList')).not.toBeVisible();
 	await exerciseDropdown.selectOption(exerciseNames[0]);
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
