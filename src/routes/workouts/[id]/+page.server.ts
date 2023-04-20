@@ -3,9 +3,9 @@ import { fail } from '@sveltejs/kit';
 
 export const load = async ({ params }) => {
 	const exercises = await prisma.exercise.findMany();
-	const workoutExercises = await prisma.workoutexercise.findMany({
+	const workoutExercises = await prisma.workoutExercise.findMany({
 		where: {
-			workoutId: params.id
+			workoutId: Number(params.id)
 		}
 	});
 	return { exercises: exercises, workoutExercises: workoutExercises };
@@ -14,14 +14,14 @@ export const load = async ({ params }) => {
 export const actions = {
 	default: async ({ request, params }) => {
 		const form = await request.formData();
-		const exercise = form.get('exercise');
+		const exerciseId = form.get('exercise');
 
 		// add exercise to workout
 		try {
-			await prisma.workoutexercise.create({
+			await prisma.workoutExercise.create({
 				data: {
-					workout: params.id,
-					exercise: exercise
+					workoutId: Number(params.id),
+					exerciseId: Number(exerciseId)
 				}
 			});
 		} catch (err) {
