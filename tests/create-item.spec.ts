@@ -23,7 +23,6 @@ test('creating an item', async ({ page }) => {
 	// select-list options should include all exercise items
 	const exercises = await prisma.exercise.findMany();
 	const dropdownOptions = page.getByTestId('exerciseDropdownItem');
-	console.log(dropdownOptions);
 	expect(await dropdownOptions.count()).toEqual(exercises.length);
 
 	// add exercise

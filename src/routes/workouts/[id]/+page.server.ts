@@ -1,9 +1,14 @@
 import { prisma } from '$lib/server/prisma';
 import { fail } from '@sveltejs/kit';
 
-export const load = async () => {
+export const load = async ({ params }) => {
 	const exercises = await prisma.exercise.findMany();
-	return { exercises: exercises };
+	const workoutExercises = await prisma.workoutexercise.findMany({
+		where: {
+			workoutId: params.id
+		}
+	});
+	return { exercises: exercises, workoutExercises: workoutExercises };
 };
 
 export const actions = {
