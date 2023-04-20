@@ -14,6 +14,6 @@
 	<button aria-label="addExercise" class="btn">Add</button>
 </form>
 
-{#if data.workoutExercises}
+{#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">Exercise List</ul>
 {/if}
