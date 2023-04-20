@@ -13,3 +13,7 @@
 	</select>
 	<button aria-label="addExercise" class="btn">Add</button>
 </form>
+
+{#if data.workoutExercises}
+	<ul data-testid="exerciseList">Exercise List</ul>
+{/if}
