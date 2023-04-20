@@ -15,5 +15,11 @@
 </form>
 
 {#if !!data.workoutExercises.length}
-	<ul data-testid="exerciseList">Exercise List</ul>
+	<ul data-testid="exerciseList">
+		{#each data.workoutExercises as item}
+			<li data-testid="exerciseListItem">
+				{item.exercise.name}
+			</li>
+		{/each}
+	</ul>
 {/if}
