@@ -6,6 +6,9 @@ export const load = async ({ params }) => {
 	const workoutExercises = await prisma.workoutExercise.findMany({
 		where: {
 			workoutId: Number(params.id)
+		},
+		include: {
+			exercise: true
 		}
 	});
 	return { exercises: exercises, workoutExercises: workoutExercises };
