@@ -21,7 +21,6 @@ model Workout {
 model WorkoutExercise {
   id         Int      @id @default(autoincrement())
   workout    Workout  @relation(fields: [workoutId], references: [id])
-  // TODO look uo foreign key relations
   workoutId  Int
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
   exerciseId Int
