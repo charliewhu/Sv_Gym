@@ -14,14 +14,14 @@ export const load = async ({ params }) => {
 export const actions = {
 	default: async ({ request, params }) => {
 		const form = await request.formData();
-		const exerciseId = form.get('exercise');
+		const exercise = form.get('exercise');
 
 		// add exercise to workout
 		try {
 			await prisma.workoutexercise.create({
 				data: {
-					workoutId: params.id,
-					exerciseId: exerciseId
+					workout: params.id,
+					exercise: exercise
 				}
 			});
 		} catch (err) {
