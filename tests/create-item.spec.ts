@@ -53,4 +53,7 @@ test('creating an item', async ({ page }) => {
 	// assert set exists
 	const setListItem = page.getByTestId('setListItem');
 	await expect(setListItem).toBeVisible();
+	await expect(setListItem).toHaveText(setInfo.weight);
+	await expect(setListItem).toHaveText(setInfo.reps);
+	await expect(setListItem).toHaveText(setInfo.rir);
 });
