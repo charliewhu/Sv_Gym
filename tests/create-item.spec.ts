@@ -41,6 +41,7 @@ test('creating an item', async ({ page }) => {
 	// goto workout exercise
 	await exerciseListItem.click();
 	await expect(page).toHaveURL(`/workouts/1/exercises/${encodeURIComponent(exerciseNames[0])}`);
+	await expect(page.title).toEqual(exerciseNames[0]);
 
 	// add sets to exercise
 	await page.getByPlaceholder('Weight').fill(setInfo.weight);
