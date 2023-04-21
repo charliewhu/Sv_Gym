@@ -3,7 +3,7 @@ import { prisma } from '../src/lib/server/prisma.ts';
 
 test('creating an item', async ({ page }) => {
 	// variables
-	const exerciseNames = ['Exercise 1', 'Exercise 2'];
+	const exerciseNames = ['Bench Press', 'Exercise 2'];
 	const setInfo = {
 		weight: '100',
 		reps: '10',
@@ -35,11 +35,12 @@ test('creating an item', async ({ page }) => {
 	await exerciseDropdown.selectOption(exerciseNames[0]);
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
-	await expect(page.getByTestId('exerciseListItem')).toHaveText(exerciseNames[0]);
+	const exerciseListItem = page.getByTestId('exerciseListItem');
+	await expect(exerciseListItem).toHaveText(exerciseNames[0]);
 
 	// goto workout exercise
-	await page.getByTestId('exerciseListitem').click();
-	await expect(page).toHaveURL('/workouts/1/exercises/1');
+	await exerciseListItem.click();
+	await expect(page).toHaveURL(`/workouts/1/exercises/${encodeURIComponent(exerciseNames[0])}`);
 
 	// add sets to exercise
 	await page.getByPlaceholder('Weight').fill(setInfo.weight);
