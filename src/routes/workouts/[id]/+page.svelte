@@ -17,9 +17,12 @@
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
 		{#each data.workoutExercises as item}
-			<li data-testid="exerciseListItem">
+			<a
+				data-testid="exerciseListItem"
+				href={`/workouts/${item.workoutId}/exercises/${item.exercise.name}`}
+			>
 				{item.exercise.name}
-			</li>
+			</a>
 		{/each}
 	</ul>
 {/if}
