@@ -4,6 +4,11 @@ import { prisma } from '../src/lib/server/prisma.ts';
 test('creating an item', async ({ page }) => {
 	// variables
 	const exerciseNames = ['Exercise 1', 'Exercise 2'];
+	const setInfo = {
+		weight: '100',
+		reps: '10',
+		rir: '2'
+	};
 
 	// setup
 	await prisma.exercise.createMany({
@@ -20,21 +25,29 @@ test('creating an item', async ({ page }) => {
 	// assert exercise dropdown is visible
 	const exerciseDropdown = page.getByLabel('exerciseDropdown');
 
-	// select-list options should include all exercise items
+	// assert select-list options contain all exercises
 	const exercises = await prisma.exercise.findMany();
 	const dropdownOptions = page.getByTestId('exerciseDropdownItem');
 	expect(await dropdownOptions.count()).toEqual(exercises.length);
 
-	// add exercise
+	// add workout exercise
 	await expect(page.getByTestId('exerciseList')).not.toBeVisible();
 	await exerciseDropdown.selectOption(exerciseNames[0]);
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
 	await expect(page.getByTestId('exerciseListItem')).toHaveText(exerciseNames[0]);
 
-	// goto exercises
+	// goto workout exercise
 	await page.getByTestId('exerciseListitem').click();
 	await expect(page).toHaveURL('/workouts/1/exercises/1');
 
 	// add sets to exercise
+	await page.getByPlaceholder('Weight').fill(setInfo.weight);
+	await page.getByPlaceholder('Reps').fill(setInfo.reps);
+	await page.getByPlaceholder('RIR').fill(setInfo.rir);
+	await page.locator('button[aria-label="submitSet"]').click();
+
+	// assert set exists
+	const setListItem = page.getByTestId('setListItem');
+	await expect(setListItem).toBeVisible();
 });
