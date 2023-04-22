@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-
 	export let data;
 </script>
 
 <svelte:head>
-	<title>{$page.params.slug}</title>
+	<title>{data.workoutExercise?.exercise.name}</title>
 </svelte:head>
 
 <form>
@@ -16,11 +14,11 @@
 </form>
 
 <table>
-	{#each data.sets as item}
+	<!-- {#each data.workoutExercise as item}
 		<tr id="setListItem">
 			<td>{item.weight}</td>
 			<td>{item.reps}</td>
 			<td>{item.rir}</td>
 		</tr>
-	{/each}
+	{/each} -->
 </table>
