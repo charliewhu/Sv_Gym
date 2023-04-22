@@ -40,7 +40,7 @@ test('creating an item', async ({ page }) => {
 
 	// goto workout exercise
 	await exerciseListItem.click();
-	await expect(page).toHaveURL(`/workouts/1/exercises/${encodeURIComponent(exerciseNames[0])}`);
+	await expect(page).toHaveURL(`/workouts/1/exercises/1`);
 	const pageTitle = await page.title();
 	expect(pageTitle).toEqual(exerciseNames[0]);
 
