@@ -19,9 +19,19 @@ model Workout {
 }
 
 model WorkoutExercise {
-  id         Int      @id @default(autoincrement())
-  workout    Workout  @relation(fields: [workoutId], references: [id])
-  workoutId  Int
-  exercise   Exercise @relation(fields: [exerciseId], references: [id])
-  exerciseId Int
+  id                  Int                  @id @default(autoincrement())
+  workout             Workout              @relation(fields: [workoutId], references: [id])
+  workoutId           Int
+  exercise            Exercise             @relation(fields: [exerciseId], references: [id])
+  exerciseId          Int
+  workoutExerciseSets WorkoutExerciseSet[]
+}
+
+model WorkoutExerciseSet {
+  id                Int             @id @default(autoincrement())
+  workoutExercise   WorkoutExercise @relation(fields: [workoutExerciseId], references: [id])
+  workoutExerciseId Int
+  weight            Decimal
+  reps              Int
+  rir               Int
 }
