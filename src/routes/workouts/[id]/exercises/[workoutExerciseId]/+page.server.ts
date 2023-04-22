@@ -14,6 +14,7 @@ export const load = async ({ params }) => {
 		if (!workoutExercise) {
 			throw error(404, 'Could not find workout exercise');
 		}
+		return workoutExercise;
 	}
 
 	return { workoutExercise: getWorkoutExercise() };

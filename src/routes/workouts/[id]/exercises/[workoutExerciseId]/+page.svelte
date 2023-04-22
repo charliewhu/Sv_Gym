@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.workoutExercise?.exercise.name}</title>
+	<title>{data.workoutExercise.exercise.name}</title>
 </svelte:head>
 
 <form>
