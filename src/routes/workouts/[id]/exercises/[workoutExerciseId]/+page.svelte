@@ -14,11 +14,11 @@
 </form>
 
 <table>
-	<!-- {#each data.workoutExercise as item}
+	{#each data.workoutExercise.workoutExerciseSets as item}
 		<tr id="setListItem">
 			<td>{item.weight}</td>
 			<td>{item.reps}</td>
 			<td>{item.rir}</td>
 		</tr>
-	{/each} -->
+	{/each}
 </table>

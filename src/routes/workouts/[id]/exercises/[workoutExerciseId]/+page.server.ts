@@ -8,7 +8,8 @@ export const load = async ({ params }) => {
 				id: Number(params.workoutExerciseId)
 			},
 			include: {
-				exercise: true
+				exercise: true,
+				workoutExerciseSets: true
 			}
 		});
 		if (!workoutExercise) {
