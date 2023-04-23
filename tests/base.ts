@@ -9,8 +9,10 @@ export const test = base.extend({
 		});
 
 		// clear all existing records
-		await prisma.exercise.deleteMany();
+		await prisma.workoutExerciseSet.deleteMany();
+		await prisma.workoutExercise.deleteMany();
 		await prisma.workout.deleteMany();
+		await prisma.exercise.deleteMany();
 		console.log('Old items cleared from db');
 
 		console.log('Test Suite running...');
