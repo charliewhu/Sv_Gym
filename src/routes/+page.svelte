@@ -9,9 +9,11 @@
 <table>
 	{#each data.workouts as item}
 		<tr data-testid="workoutListItem">
-			<a href={`workouts/${item.id}`}>
-				{item.id}
-			</a>
+			<td>
+				<a href={`workouts/${item.id}`}>
+					{item.id}
+				</a>
+			</td>
 		</tr>
 	{/each}
 </table>
