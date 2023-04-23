@@ -1,4 +1,4 @@
-import { error } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 
 export const load = async ({ params }) => {
@@ -19,4 +19,29 @@ export const load = async ({ params }) => {
 	}
 
 	return { workoutExercise: getWorkoutExercise() };
+};
+
+export const actions = {
+	default: async ({ request, params }) => {
+		const form = await request.formData();
+		const weight = form.get('weight');
+		const reps = form.get('reps');
+		const rir = form.get('rir');
+
+		// add exercise to workout
+		try {
+			await prisma.workoutExerciseSet.create({
+				data: {
+					workoutExerciseId: Number(params.workoutExerciseId),
+					weight: Number(weight),
+					reps: Number(reps),
+					rir: Number(rir)
+				}
+			});
+		} catch (err) {
+			return fail(500, { message: 'could not add set' });
+		}
+
+		return { status: 201 };
+	}
 };

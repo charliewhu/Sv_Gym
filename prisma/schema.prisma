@@ -31,7 +31,7 @@ model WorkoutExerciseSet {
   id                Int             @id @default(autoincrement())
   workoutExercise   WorkoutExercise @relation(fields: [workoutExerciseId], references: [id])
   workoutExerciseId Int
-  weight            Decimal
+  weight            Int
   reps              Int
   rir               Int
 }

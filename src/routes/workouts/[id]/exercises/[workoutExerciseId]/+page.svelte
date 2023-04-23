@@ -6,7 +6,7 @@
 	<title>{data.workoutExercise.exercise.name}</title>
 </svelte:head>
 
-<form>
+<form method="POST">
 	<input type="text" name="weight" placeholder="Weight" />
 	<input type="text" name="reps" placeholder="Reps" />
 	<input type="text" name="rir" placeholder="RIR" />

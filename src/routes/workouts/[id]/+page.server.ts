@@ -28,7 +28,7 @@ export const actions = {
 				}
 			});
 		} catch (err) {
-			return fail(500, { message: 'could not add wokout exercise' });
+			return fail(500, { message: 'could not add workout exercise' });
 		}
 
 		return { status: 201 };
