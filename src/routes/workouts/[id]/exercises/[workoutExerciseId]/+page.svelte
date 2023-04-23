@@ -15,7 +15,7 @@
 
 <table>
 	{#each data.workoutExercise.workoutExerciseSets as item}
-		<tr id="setListItem">
+		<tr data-testid="setListItem">
 			<td>{item.weight}</td>
 			<td>{item.reps}</td>
 			<td>{item.rir}</td>
