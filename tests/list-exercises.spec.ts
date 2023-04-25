@@ -19,6 +19,6 @@ test('listing exercises', async ({ page }) => {
 	const exerciseItems = page.getByTestId('exerciseListItem');
 	const count = await exerciseItems.count();
 	expect(count).toEqual(exercises.length);
-	await expect(exerciseItems).toContainText(exerciseNames[0]);
-	await expect(exerciseItems).toContainText(exerciseNames[1]);
+	await expect(exerciseItems.first()).toContainText(exerciseNames[0]);
+	await expect(exerciseItems.last()).toContainText(exerciseNames[1]);
 });
