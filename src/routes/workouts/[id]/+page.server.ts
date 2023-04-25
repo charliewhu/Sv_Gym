@@ -2,7 +2,6 @@ import { prisma } from '$lib/server/prisma';
 import { fail } from '@sveltejs/kit';
 
 export const load = async ({ params }) => {
-	const exercises = await prisma.exercise.findMany();
 	const workoutExercises = await prisma.workoutExercise.findMany({
 		where: {
 			workoutId: Number(params.id)
@@ -11,7 +10,7 @@ export const load = async ({ params }) => {
 			exercise: true
 		}
 	});
-	return { exercises: exercises, workoutExercises: workoutExercises };
+	return { workoutExercises: workoutExercises };
 };
 
 export const actions = {
