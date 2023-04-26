@@ -13,7 +13,7 @@ test('creating exercises', async ({ page }) => {
 	await expect(exercisesCount).toEqual(0);
 
 	// click add exercises
-	await page.locator('button[aria-label="createExercise"]').click();
+	await page.locator('a[aria-label="createExercise"]').click();
 
 	// type exercise name
 	await page.getByPlaceholder('Name').fill(exerciseName);
