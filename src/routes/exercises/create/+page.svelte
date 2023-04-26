@@ -1,4 +1,4 @@
 <form method="POST">
 	<input type="text" name="name" placeholder="Name" />
-	<button type="submit" aria-label="submitNewExercise" />
+	<button type="submit" aria-label="submitNewExercise" class="btn">Create</button>
 </form>
