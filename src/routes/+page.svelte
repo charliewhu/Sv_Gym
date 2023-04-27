@@ -2,18 +2,16 @@
 	export let data;
 </script>
 
-<form method="POST" action="">
+<form method="POST" action="" class="text-center mb-6">
 	<button type="submit" aria-label="startWorkout" class="btn">Start New Workout</button>
 </form>
 
-<table>
+<ul>
 	{#each data.workouts as item}
-		<tr data-testid="workoutListItem">
-			<td>
-				<a href={`workouts/${item.id}`}>
-					{item.id}
-				</a>
-			</td>
-		</tr>
+		<a href={`workouts/${item.id}`}>
+			<li class="bg-base-200 p-4 m-1" data-testid="workoutListItem">
+				{item.id}
+			</li>
+		</a>
 	{/each}
-</table>
+</ul>
