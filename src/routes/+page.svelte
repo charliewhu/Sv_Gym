@@ -9,7 +9,7 @@
 <ul>
 	{#each data.workouts as item}
 		<a href={`workouts/${item.id}`}>
-			<li class="bg-base-300 p-4 m-3" data-testid="workoutListItem">
+			<li class="bg-base-300 hover:bg-base-200 p-4 m-3" data-testid="workoutListItem">
 				{item.id}
 			</li>
 		</a>
