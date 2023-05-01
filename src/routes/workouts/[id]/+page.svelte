@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ListItem from '$lib/components/ListItem.svelte';
+
 	export let data;
 </script>
 
@@ -17,9 +19,11 @@
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
 		{#each data.workoutExercises as item}
-			<a data-testid="exerciseListItem" href={`/workouts/${item.workoutId}/exercises/${item.id}`}>
-				{item.exercise.name}
-			</a>
+			<ListItem
+				href={`/workouts/${item.workoutId}/exercises/${item.id}`}
+				testId="exerciseListItem"
+				content={item.exercise.name}
+			/>
 		{/each}
 	</ul>
 {/if}
