@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ListItem from '$lib/components/ListItem.svelte';
+
 	export let data;
 </script>
 
@@ -8,10 +10,6 @@
 
 <ul>
 	{#each data.workouts as item}
-		<a href={`workouts/${item.id}`}>
-			<li class="bg-base-300 hover:bg-base-200 p-4 m-3" data-testid="workoutListItem">
-				{item.id}
-			</li>
-		</a>
+		<ListItem href={`workouts/${item.id}`} testId="workoutListItem" content={item.id} />
 	{/each}
 </ul>
