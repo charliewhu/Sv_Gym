@@ -4,8 +4,12 @@
 	export let data;
 </script>
 
-<form method="POST">
-	<select name="exercise" aria-label="exerciseDropdown">
+<form method="POST" class="text-center">
+	<select
+		name="exercise"
+		aria-label="exerciseDropdown"
+		class="select select-bordered w-full max-w-xs"
+	>
 		<option value="" />
 		{#each data.exercises as item}
 			<option data-testid="exerciseDropdownItem" value={item.id}>
@@ -13,7 +17,7 @@
 			</option>
 		{/each}
 	</select>
-	<button aria-label="addExercise" class="btn">Add</button>
+	<button aria-label="addExercise" class="btn btn-primary">Add</button>
 </form>
 
 {#if !!data.workoutExercises.length}
