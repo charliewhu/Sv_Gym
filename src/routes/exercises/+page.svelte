@@ -4,7 +4,9 @@
 	export let data;
 </script>
 
-<a href="/exercises/create" aria-label="createExercise" class="btn">Create New</a>
+<div class="text-center mb-6">
+	<a href="/exercises/create" aria-label="createExercise" class="btn btn-primary">Create New</a>
+</div>
 
 <ul data-testid="exerciseList">
 	{#each data.exercises as exercise}
