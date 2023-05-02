@@ -5,7 +5,7 @@
 </script>
 
 <form method="POST" action="" class="text-center mb-6">
-	<button type="submit" aria-label="startWorkout" class="btn">Start New Workout</button>
+	<button type="submit" aria-label="startWorkout" class="btn btn-primary">Start New Workout</button>
 </form>
 
 <ul>
