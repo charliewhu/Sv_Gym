@@ -6,11 +6,36 @@
 	<title>{data.workoutExercise.exercise.name}</title>
 </svelte:head>
 
-<form method="POST">
-	<input type="text" name="weight" placeholder="Weight" />
-	<input type="text" name="reps" placeholder="Reps" />
-	<input type="text" name="rir" placeholder="RIR" />
-	<button aria-label="submitSet" class="btn">Add</button>
+<form method="POST" class="text-center">
+	<div class="flex justify-evenly">
+		<div class="pb-4">
+			<input
+				type="text"
+				name="weight"
+				placeholder="Weight"
+				class="input input-bordered w-full max-w-xs flex flex-col"
+			/>
+		</div>
+		<div class="pb-4">
+			<input
+				type="text"
+				name="reps"
+				placeholder="Reps"
+				class="input input-bordered w-full max-w-xs"
+			/>
+		</div>
+		<div class="pb-4">
+			<input
+				type="text"
+				name="rir"
+				placeholder="RIR"
+				class="input input-bordered w-full max-w-xs"
+			/>
+		</div>
+	</div>
+	<div>
+		<button aria-label="submitSet" class="btn btn-primary w-10/12">Add</button>
+	</div>
 </form>
 
 <table>
