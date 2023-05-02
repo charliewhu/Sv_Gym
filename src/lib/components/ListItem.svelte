@@ -5,7 +5,7 @@
 </script>
 
 <a {href}>
-	<li class="bg-base-300 hover:bg-base-200 p-4 m-3" data-testid={testId}>
+	<li class="bg-neutral hover:bg-neutral-focus p-4 m-3" data-testid={testId}>
 		{content}
 	</li>
 </a>
