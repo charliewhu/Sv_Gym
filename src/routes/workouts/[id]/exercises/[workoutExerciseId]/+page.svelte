@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ListItem from '$lib/components/ListItem.svelte';
+
 	export let data;
 </script>
 
@@ -38,12 +40,10 @@
 	</div>
 </form>
 
-<table>
+<ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
-		<tr data-testid="setListItem">
-			<td>{item.weight}</td>
-			<td>{item.reps}</td>
-			<td>{item.rir}</td>
-		</tr>
+		<ListItem testId="setListItem">
+			{`${item.weight} x ${item.reps} x ${item.rir}`}
+		</ListItem>
 	{/each}
-</table>
+</ul>
