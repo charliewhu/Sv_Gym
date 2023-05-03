@@ -23,11 +23,9 @@
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
 		{#each data.workoutExercises as item}
-			<ListItem
-				href={`/workouts/${item.workoutId}/exercises/${item.id}`}
-				testId="exerciseListItem"
-				content={item.exercise.name}
-			/>
+			<ListItem href={`/workouts/${item.workoutId}/exercises/${item.id}`} testId="exerciseListItem">
+				{item.exercise.name}
+			</ListItem>
 		{/each}
 	</ul>
 {/if}

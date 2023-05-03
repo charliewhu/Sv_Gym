@@ -10,6 +10,8 @@
 
 <ul data-testid="exerciseList">
 	{#each data.exercises as exercise}
-		<ListItem testId="exerciseListItem" content={exercise.name} />
+		<ListItem testId="exerciseListItem">
+			{exercise.name}
+		</ListItem>
 	{/each}
 </ul>
