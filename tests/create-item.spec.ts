@@ -40,7 +40,7 @@ test('creating an item', async ({ page }) => {
 
 	// goto workout exercise
 	await exerciseListItem.click();
-	await expect(page).toHaveURL(`/sets?&workoutExerciseId=1`);
+	await expect(page).toHaveURL(`/sets?workoutExerciseId=1`);
 
 	// add sets to exercise
 	await page.getByPlaceholder('Weight').fill(setInfo.weight);
