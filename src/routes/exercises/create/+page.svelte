@@ -8,6 +8,6 @@
 		/>
 	</div>
 	<div>
-		<button aria-label="submitSet" class="btn btn-primary w-2/12">Add</button>
+		<button aria-label="submitNewExercise" class="btn btn-primary w-2/12">Add</button>
 	</div>
 </form>
