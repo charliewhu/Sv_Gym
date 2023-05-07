@@ -10,7 +10,7 @@
 
 <ul>
 	{#each data.workouts as item}
-		<ListItem href={`workouts/${item.id}`} testId="workoutListItem">
+		<ListItem href={`workout-exercises?workoutId=${item.id}`} testId="workoutListItem">
 			{item.id}
 		</ListItem>
 	{/each}
