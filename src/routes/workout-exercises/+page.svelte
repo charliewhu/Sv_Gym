@@ -1,8 +1,13 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import ListItem from '$lib/components/ListItem.svelte';
 
 	export let data;
 </script>
+
+<svelte:head>
+	<title>Workout {$page.url.searchParams.get('workoutId')}</title>
+</svelte:head>
 
 <form method="POST" class="text-center">
 	<select
