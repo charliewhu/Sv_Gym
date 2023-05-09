@@ -43,5 +43,17 @@ export const actions = {
 		}
 
 		return { status: 201 };
+	},
+	delete: async ({ request }) => {
+		const form = await request.formData();
+		const id = form.get('id');
+
+		try {
+			await prisma.workoutExerciseSet.delete({ where: { id: Number(id) } });
+		} catch (err) {
+			return fail(500, { message: 'could not delete set' });
+		}
+
+		return { status: 204 };
 	}
 };
