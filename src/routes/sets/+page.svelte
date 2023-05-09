@@ -47,7 +47,8 @@
 			data-testid="setListItem"
 		>
 			<div>{`${item.weight} x ${item.reps} x ${item.rir}`}</div>
-			<form method="POST">
+			<form action={`${$page.url}&/delete`} method="POST" use:enhance>
+				<input type="hidden" name="id" value={item.id} />
 				<button class="btn btn-secondary" data-testid="deleteSetBtn">Delete</button>
 			</form>
 		</li>
