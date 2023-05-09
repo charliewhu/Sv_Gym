@@ -22,7 +22,7 @@ export const load = async ({ url }) => {
 };
 
 export const actions = {
-	default: async ({ request, url }) => {
+	create: async ({ request, url }) => {
 		const form = await request.formData();
 		const weight = form.get('weight');
 		const reps = form.get('reps');

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ListItem from '$lib/components/ListItem.svelte';
-
+	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 	export let data;
 </script>
 
@@ -8,7 +8,7 @@
 	<title>{data.workoutExercise.exercise.name}</title>
 </svelte:head>
 
-<form method="POST" class="text-center">
+<form action={`${$page.url}&/create`} method="POST" use:enhance class="text-center">
 	<div class="flex justify-evenly">
 		<div class="pb-4">
 			<input
