@@ -42,8 +42,14 @@
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
-		<ListItem testId="setListItem">
-			{`${item.weight} x ${item.reps} x ${item.rir}`}
-		</ListItem>
+		<li
+			class="bg-neutral hover:bg-neutral-focus p-4 m-3 flex flex-row justify-between items-center"
+			data-testid="setListItem"
+		>
+			<div>{`${item.weight} x ${item.reps} x ${item.rir}`}</div>
+			<form method="POST">
+				<button class="btn btn-secondary" data-testid="deleteSetBtn">Delete</button>
+			</form>
+		</li>
 	{/each}
 </ul>
