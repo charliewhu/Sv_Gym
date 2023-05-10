@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import ListItem from '$lib/components/ListItem.svelte';
 
 	export let data;
@@ -11,7 +12,15 @@
 <ul>
 	{#each data.workouts as item}
 		<ListItem href={`workout-exercises?workoutId=${item.id}`} testId="workoutListItem">
-			{item.id}
+			<div class="flex flex-row justify-between items-center">
+				<div>{item.id}</div>
+				<form action={`${$page.url}?/delete`} method="POST">
+					<input type="hidden" name="id" value={item.id} />
+					<button on:click|stopPropagation data-testid="deleteWorkoutBtn" class="btn btn-secondary">
+						Delete
+					</button>
+				</form>
+			</div>
 		</ListItem>
 	{/each}
 </ul>
