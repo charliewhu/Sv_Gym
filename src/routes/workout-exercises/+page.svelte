@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import ListItem from '$lib/components/ListItem.svelte';
 
@@ -9,7 +10,7 @@
 	<title>Workout {$page.url.searchParams.get('workoutId')}</title>
 </svelte:head>
 
-<form method="POST" class="text-center">
+<form action={`${$page.url}&/create`} method="POST" use:enhance class="text-center">
 	<select
 		name="exercise"
 		aria-label="exerciseDropdown"
@@ -31,10 +32,9 @@
 			<ListItem testId="exerciseListItem">
 				<div class="flex flex-row justify-between items-center">
 					<div>{item.exercise.name}</div>
-					<form action="" method="post">
-						<button type="submit" data-testid="deleteExerciseBtn" class="btn btn-secondary">
-							Delete
-						</button>
+					<form action={`${$page.url}&/delete`} method="POST" use:enhance>
+						<input type="hidden" name="id" value={item.id} />
+						<button data-testid="deleteExerciseBtn" class="btn btn-secondary"> Delete </button>
 					</form>
 				</div>
 			</ListItem>
