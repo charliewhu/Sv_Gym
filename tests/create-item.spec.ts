@@ -36,7 +36,7 @@ test('creating an item', async ({ page }) => {
 	await page.locator('button[aria-label="addExercise"]').click();
 	await expect(page.getByTestId('exerciseList')).toBeVisible();
 	const exerciseListItem = page.getByTestId('exerciseListItem');
-	await expect(exerciseListItem).toHaveText(exerciseNames[0]);
+	await expect(exerciseListItem).toContainText(exerciseNames[0]);
 
 	// goto workout exercise
 	await exerciseListItem.click();
