@@ -1,7 +1,7 @@
 import { test, expect } from './base.ts';
 import { prisma } from '../src/lib/server/prisma.ts';
 
-test('deleting sets', async ({ page }) => {
+test('deleting workout exercises', async ({ page }) => {
 	// arrange (add workout exercise to db)
 	const workout = await prisma.workout.create({ data: {} });
 	const exercise = await prisma.exercise.create({ data: { name: 'exercise' } });
