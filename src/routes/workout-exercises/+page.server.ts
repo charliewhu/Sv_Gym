@@ -14,7 +14,7 @@ export const load = async ({ url }) => {
 };
 
 export const actions = {
-	default: async ({ request, url }) => {
+	create: async ({ request, url }) => {
 		const form = await request.formData();
 		const exerciseId = form.get('exercise');
 
@@ -31,5 +31,17 @@ export const actions = {
 		}
 
 		return { status: 201 };
+	},
+	delete: async ({ request }) => {
+		const form = await request.formData();
+		const id = form.get('id');
+
+		try {
+			await prisma.workoutExercise.delete({ where: { id: Number(id) } });
+		} catch (err) {
+			return fail(500, { message: 'could not delete workout exercise' });
+		}
+
+		return { status: 204 };
 	}
 };
