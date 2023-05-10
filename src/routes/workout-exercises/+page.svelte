@@ -29,12 +29,18 @@
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
 		{#each data.workoutExercises as item}
-			<ListItem testId="exerciseListItem">
+			<ListItem href={`sets?workoutExerciseId=${item.id}`} testId="exerciseListItem">
 				<div class="flex flex-row justify-between items-center">
 					<div>{item.exercise.name}</div>
-					<form action={`${$page.url}&/delete`} method="POST" use:enhance>
+					<form action={`${$page.url}&/delete`} method="POST">
 						<input type="hidden" name="id" value={item.id} />
-						<button data-testid="deleteExerciseBtn" class="btn btn-secondary"> Delete </button>
+						<button
+							on:click|stopPropagation
+							data-testid="deleteExerciseBtn"
+							class="btn btn-secondary"
+						>
+							Delete
+						</button>
 					</form>
 				</div>
 			</ListItem>
