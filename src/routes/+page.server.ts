@@ -8,7 +8,7 @@ export const load = async () => {
 };
 
 export const actions = {
-	default: async () => {
+	create: async () => {
 		let workout;
 
 		try {
@@ -19,5 +19,17 @@ export const actions = {
 		}
 
 		throw redirect(301, `/workout-exercises?workoutId=${workout.id}`);
+	},
+	delete: async ({ request }) => {
+		const form = await request.formData();
+		const id = form.get('id');
+
+		try {
+			await prisma.workout.delete({ where: { id: Number(id) } });
+		} catch (err) {
+			return fail(500, { message: 'could not delete workout exercise' });
+		}
+
+		return { status: 204 };
 	}
 };
