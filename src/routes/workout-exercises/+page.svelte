@@ -28,8 +28,15 @@
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
 		{#each data.workoutExercises as item}
-			<ListItem href={`sets?workoutExerciseId=${item.id}`} testId="exerciseListItem">
-				{item.exercise.name}
+			<ListItem testId="exerciseListItem">
+				<div class="flex flex-row justify-between items-center">
+					<div>{item.exercise.name}</div>
+					<form action="" method="post">
+						<button type="submit" data-testid="deleteExerciseBtn" class="btn btn-secondary">
+							Delete
+						</button>
+					</form>
+				</div>
 			</ListItem>
 		{/each}
 	</ul>
