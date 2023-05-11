@@ -6,6 +6,10 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>Workouts</title>
+</svelte:head>
+
 <form action={`?/create`} method="POST" use:enhance class="text-center mb-6">
 	<button type="submit" aria-label="startWorkout" class="btn btn-primary">Start New Workout</button>
 </form>
