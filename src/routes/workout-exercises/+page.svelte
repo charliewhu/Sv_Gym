@@ -31,7 +31,7 @@
 		{#each data.workoutExercises as item}
 			<ListItem href={`sets?workoutExerciseId=${item.id}`} testId="exerciseListItem">
 				<div class="flex flex-row justify-between items-center">
-					<div>{item.exercise.name}</div>
+					<div>{item.Exercise.name}</div>
 					<form action={`${$page.url}&/delete`} method="POST">
 						<input type="hidden" name="id" value={item.id} />
 						<button

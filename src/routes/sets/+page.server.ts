@@ -8,7 +8,7 @@ export const load = async ({ url }) => {
 				id: Number(url.searchParams.get('workoutExerciseId'))
 			},
 			include: {
-				exercise: true,
+				Exercise: true,
 				workoutExerciseSets: true
 			}
 		});
@@ -32,7 +32,7 @@ export const actions = {
 		try {
 			await prisma.workoutExerciseSet.create({
 				data: {
-					workoutExerciseId: Number(url.searchParams.get('workoutExerciseId')),
+					workoutExercise: Number(url.searchParams.get('workoutExerciseId')),
 					weight: Number(weight),
 					reps: Number(reps),
 					rir: Number(rir)

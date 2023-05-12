@@ -4,10 +4,10 @@ import { fail } from '@sveltejs/kit';
 export const load = async ({ url }) => {
 	const workoutExercises = await prisma.workoutExercise.findMany({
 		where: {
-			workoutId: Number(url.searchParams.get('workoutId'))
+			workout: Number(url.searchParams.get('workoutId'))
 		},
 		include: {
-			exercise: true
+			Exercise: true
 		}
 	});
 	return { workoutExercises: workoutExercises };
@@ -22,8 +22,8 @@ export const actions = {
 		try {
 			await prisma.workoutExercise.create({
 				data: {
-					workoutId: Number(url.searchParams.get('workoutId')),
-					exerciseId: Number(exerciseId)
+					workout: Number(url.searchParams.get('workoutId')),
+					exercise: Number(exerciseId)
 				}
 			});
 		} catch (err) {

@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.workoutExercise.exercise.name}</title>
+	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
 <form action={`${$page.url}&/create`} method="POST" use:enhance class="text-center">
