@@ -6,12 +6,12 @@ test('deleting sets', async ({ page }) => {
 	const workout = await prisma.workout.create({ data: {} });
 	const exercise = await prisma.exercise.create({ data: { name: 'exercise' } });
 	const workoutExercise = await prisma.workoutExercise.create({
-		data: { workoutId: workout.id, exerciseId: exercise.id }
+		data: { workout: workout.id, exercise: exercise.id }
 	});
 	await prisma.workoutExerciseSet.createMany({
 		data: [
-			{ workoutExerciseId: workoutExercise.id, weight: 100, reps: 5, rir: 2 },
-			{ workoutExerciseId: workoutExercise.id, weight: 110, reps: 8, rir: 3 }
+			{ workoutExercise: workoutExercise.id, weight: 100, reps: 5, rir: 2 },
+			{ workoutExercise: workoutExercise.id, weight: 110, reps: 8, rir: 3 }
 		]
 	});
 

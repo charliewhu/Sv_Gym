@@ -7,8 +7,8 @@ test('deleting workout exercises', async ({ page }) => {
 	const exercise = await prisma.exercise.create({ data: { name: 'exercise' } });
 	await prisma.workoutExercise.createMany({
 		data: [
-			{ workoutId: workout.id, exerciseId: exercise.id },
-			{ workoutId: workout.id, exerciseId: exercise.id }
+			{ workout: workout.id, exercise: exercise.id },
+			{ workout: workout.id, exercise: exercise.id }
 		]
 	});
 
