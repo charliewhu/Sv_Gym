@@ -16,7 +16,7 @@ test('deleting sets', async ({ page }) => {
 	});
 
 	// act: go to sets list page
-	await page.goto(`sets?workoutExerciseId=${workoutExercise.id}`);
+	await page.goto(`workout-exercises/${workoutExercise.id}`);
 
 	// assert: set delete buttons visible
 	let deleteBtns = page.getByTestId('deleteSetBtn');
