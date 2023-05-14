@@ -13,7 +13,7 @@ test('deleting workout exercises', async ({ page }) => {
 	});
 
 	// act: go to workout page
-	await page.goto(`/workout-exercises?workoutId=${workout.id}`);
+	await page.goto(`/workouts/${workout.id}`);
 
 	// assert: delete buttons visible
 	let deleteBtns = page.getByTestId('deleteExerciseBtn');
