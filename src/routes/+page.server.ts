@@ -18,7 +18,7 @@ export const actions = {
 			return fail(500, { message: 'could not create food' });
 		}
 
-		throw redirect(301, `/workout-exercises?workoutId=${workout.id}`);
+		throw redirect(301, `/workouts/${workout.id}`);
 	},
 	delete: async ({ request }) => {
 		const form = await request.formData();
