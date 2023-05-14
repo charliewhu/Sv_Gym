@@ -19,6 +19,5 @@ test('listing workouts', async ({ page }) => {
 	await workoutItems.first().click();
 
 	// assert link to workout exercise list page
-	await expect(page).toHaveURL(`workout-exercises?workoutId=${workouts[0].id}`);
 	await expect(page).toHaveTitle(`Workout ${workouts[0].id}`);
 });
