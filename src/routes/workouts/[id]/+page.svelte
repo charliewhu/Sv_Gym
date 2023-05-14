@@ -7,10 +7,10 @@
 </script>
 
 <svelte:head>
-	<title>Workout {$page.url.searchParams.get('workoutId')}</title>
+	<title>Workout {$page.params.id}</title>
 </svelte:head>
 
-<form action={`${$page.url}&/create`} method="POST" use:enhance class="text-center">
+<form action={`?/create`} method="POST" use:enhance class="text-center">
 	<select
 		name="exercise"
 		aria-label="exerciseDropdown"
@@ -29,10 +29,10 @@
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
 		{#each data.workoutExercises as item}
-			<ListItem href={`sets?workoutExerciseId=${item.id}`} testId="exerciseListItem">
+			<ListItem href={`/workout-exercises/${item.id}`} testId="exerciseListItem">
 				<div class="flex flex-row justify-between items-center">
 					<div>{item.Exercise.name}</div>
-					<form action={`${$page.url}&/delete`} method="POST">
+					<form action={`?/delete`} method="POST">
 						<input type="hidden" name="id" value={item.id} />
 						<button
 							on:click|stopPropagation

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
 	export let data;
 </script>
 
@@ -8,7 +7,7 @@
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
-<form action={`${$page.url}&/create`} method="POST" use:enhance class="text-center">
+<form action={`?/create`} method="POST" use:enhance class="text-center">
 	<div class="flex justify-evenly">
 		<div class="pb-4">
 			<input
@@ -47,7 +46,7 @@
 			data-testid="setListItem"
 		>
 			<div>{`${item.weight} x ${item.reps} x ${item.rir}`}</div>
-			<form action={`${$page.url}&/delete`} method="POST" use:enhance>
+			<form action={`?/delete`} method="POST" use:enhance>
 				<input type="hidden" name="id" value={item.id} />
 				<button class="btn btn-secondary" data-testid="deleteSetBtn">Delete</button>
 			</form>
