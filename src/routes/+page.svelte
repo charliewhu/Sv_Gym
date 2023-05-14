@@ -16,7 +16,7 @@
 
 <ul>
 	{#each data.workouts as item}
-		<ListItem href={`workout-exercises?workoutId=${item.id}`} testId="workoutListItem">
+		<ListItem href={`workouts/${item.id}`} testId="workoutListItem">
 			<div class="flex flex-row justify-between items-center">
 				<div>{item.id}</div>
 				<form action={`?/delete`} method="POST" use:enhance>
