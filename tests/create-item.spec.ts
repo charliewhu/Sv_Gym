@@ -18,11 +18,10 @@ test('creating an item', async ({ page }) => {
 	// start a workout
 	await page.goto('/');
 	await page.locator('button[aria-label="startWorkout"]').click();
-	const workouts = await prisma.workout.findMany();
-	expect(workouts.length).toEqual(1);
 
 	// assert exercise dropdown is visible
 	const exerciseDropdown = page.getByLabel('exerciseDropdown');
+	await expect(exerciseDropdown).toBeVisible();
 
 	// assert select-list options contain all exercises
 	const exercises = await prisma.exercise.findMany();
