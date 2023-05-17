@@ -16,11 +16,11 @@ test('update set', async ({ page }) => {
 	await page.goto(`workout-exercises/${workoutExercise.id}`);
 
 	// assert: set edit button visible
-	const editBtns = page.getByTestId('editSetBtn');
+	const editBtns = page.getByTestId('updateSetBtn');
 	await expect(editBtns).toHaveCount(1);
 
 	// act: click edit button
-	await page.getByTestId('editSetBtn').first().click();
+	await page.getByTestId('updateSetBtn').first().click();
 
 	// assert: form filled with set data
 	await expect(page.getByPlaceholder('Weight')).toContain(set.weight);
