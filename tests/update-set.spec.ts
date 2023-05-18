@@ -23,9 +23,9 @@ test('update set', async ({ page }) => {
 	await page.getByTestId('updateSetBtn').first().click();
 
 	// assert: form filled with set data
-	await expect(page.getByPlaceholder('Weight')).toContain(set.weight);
-	await expect(page.getByPlaceholder('Reps')).toContain(set.reps);
-	await expect(page.getByPlaceholder('RIR')).toContain(set.rir);
+	await expect(await page.getByPlaceholder('Weight').inputValue()).toEqual(String(set.weight));
+	await expect(await page.getByPlaceholder('Reps').inputValue()).toEqual(String(set.reps));
+	await expect(await page.getByPlaceholder('RIR').inputValue()).toEqual(String(set.rir));
 
 	// act: change form values
 	await page.getByPlaceholder('Weight').clear();
