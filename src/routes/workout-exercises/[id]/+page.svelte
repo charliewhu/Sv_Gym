@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import SetsForm from '$lib/components/SetsForm.svelte';
 	export let data;
 </script>
 
@@ -7,37 +8,7 @@
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
-<form action={`?/create`} method="POST" use:enhance class="text-center">
-	<div class="flex justify-evenly">
-		<div class="pb-4">
-			<input
-				type="text"
-				name="weight"
-				placeholder="Weight"
-				class="input input-bordered w-full max-w-xs flex flex-col"
-			/>
-		</div>
-		<div class="pb-4">
-			<input
-				type="text"
-				name="reps"
-				placeholder="Reps"
-				class="input input-bordered w-full max-w-xs"
-			/>
-		</div>
-		<div class="pb-4">
-			<input
-				type="text"
-				name="rir"
-				placeholder="RIR"
-				class="input input-bordered w-full max-w-xs"
-			/>
-		</div>
-	</div>
-	<div>
-		<button aria-label="submitSet" class="btn btn-primary w-10/12">Add</button>
-	</div>
-</form>
+<SetsForm action={`?/create`} text="Add" label="submitSet" />
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
@@ -47,7 +18,8 @@
 		>
 			<div>{`${item.weight} x ${item.reps} x ${item.rir}`}</div>
 			<div class="flex flex-row">
-				<a href={`${item.id}/update`} class="btn btn-secondary" data-testid="updateSetBtn">Update</a
+				<a href={`/sets/${item.id}/update`} class="btn btn-secondary" data-testid="updateSetBtn"
+					>Update</a
 				>
 				<form action={`?/delete`} method="POST" class="px-1" use:enhance>
 					<input type="hidden" name="id" value={item.id} />
