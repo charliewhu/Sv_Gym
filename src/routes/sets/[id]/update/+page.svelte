@@ -6,7 +6,7 @@
 
 <SetsForm
 	action={`?/create`}
-	text="Add"
+	text="Update"
 	label="submitSet"
 	weight={data.set?.weight}
 	reps={data.set?.reps}
