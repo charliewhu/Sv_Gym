@@ -5,7 +5,7 @@
 </script>
 
 <SetsForm
-	action={`?/create`}
+	action=""
 	text="Update"
 	label="submitSet"
 	weight={data.set?.weight}
