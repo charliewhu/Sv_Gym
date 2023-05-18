@@ -37,5 +37,5 @@ test('update set', async ({ page }) => {
 	// assert: listItem has changed value
 	const setListItem = page.getByTestId('setListItem');
 	await expect(setListItem).toBeVisible();
-	await expect(setListItem).toContainText(String(set.weight));
+	await expect(setListItem).toContainText('110');
 });
