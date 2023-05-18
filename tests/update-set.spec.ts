@@ -32,7 +32,7 @@ test('update set', async ({ page }) => {
 	await page.getByPlaceholder('Weight').fill('110');
 
 	// act: submit form
-	await page.getByText('Edit').click();
+	await page.getByText('Update').click();
 
 	// assert: listItem has changed value
 	const setListItem = page.getByTestId('setListItem');
