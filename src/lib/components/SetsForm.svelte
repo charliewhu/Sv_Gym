@@ -13,7 +13,8 @@
 	<div class="flex justify-evenly">
 		<div class="pb-4">
 			<input
-				type="text"
+				type="number"
+				inputmode="decimal"
 				name="weight"
 				placeholder="Weight"
 				class="input input-bordered w-full max-w-xs flex flex-col"
@@ -22,7 +23,8 @@
 		</div>
 		<div class="pb-4">
 			<input
-				type="text"
+				type="number"
+				inputmode="decimal"
 				name="reps"
 				placeholder="Reps"
 				class="input input-bordered w-full max-w-xs"
@@ -31,7 +33,8 @@
 		</div>
 		<div class="pb-4">
 			<input
-				type="text"
+				type="number"
+				inputmode="decimal"
 				name="rir"
 				placeholder="RIR"
 				class="input input-bordered w-full max-w-xs"
