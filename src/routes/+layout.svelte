@@ -27,7 +27,9 @@
 					/>
 				</svg>
 			</label>
-			<ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-40">
+			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-40">
 				<li>
 					<a href="/">Workouts</a>
 				</li>
