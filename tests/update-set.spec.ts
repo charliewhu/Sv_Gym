@@ -15,12 +15,8 @@ test('update set', async ({ page }) => {
 	// act: go to sets list page
 	await page.goto(`workout-exercises/${workoutExercise.id}`);
 
-	// assert: set edit button visible
-	const editBtns = page.getByTestId('updateSetBtn');
-	await expect(editBtns).toHaveCount(1);
-
 	// act: click edit button
-	await page.getByTestId('updateSetBtn').first().click();
+	await page.getByTestId('setListItem').first().click();
 	await page.waitForLoadState('networkidle');
 
 	// assert: form filled with set data
