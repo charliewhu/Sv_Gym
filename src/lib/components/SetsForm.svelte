@@ -12,6 +12,9 @@
 <form {action} method="POST" use:enhance class="text-center">
 	<div class="flex justify-evenly">
 		<div class="pb-4">
+			<label class="label" for="weight">
+				<span class="label-text">Weight</span>
+			</label>
 			<input
 				type="number"
 				inputmode="decimal"
@@ -22,6 +25,9 @@
 			/>
 		</div>
 		<div class="pb-4">
+			<label class="label" for="reps">
+				<span class="label-text">Reps</span>
+			</label>
 			<input
 				type="number"
 				inputmode="decimal"
@@ -32,6 +38,9 @@
 			/>
 		</div>
 		<div class="pb-4">
+			<label class="label" for="rir">
+				<span class="label-text">RIR</span>
+			</label>
 			<input
 				type="number"
 				inputmode="decimal"
