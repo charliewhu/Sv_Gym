@@ -8,7 +8,7 @@
 	action=""
 	text="Update"
 	label="submitSet"
-	weight={data.set?.weight}
-	reps={data.set?.reps}
-	rir={data.set?.rir}
+	weight={data.set.weight}
+	reps={data.set.reps}
+	rir={data.set.rir}
 />
