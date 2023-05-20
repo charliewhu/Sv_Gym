@@ -5,10 +5,11 @@
 <nav class="navbar bg-base-300 mb-6">
 	<div class="container mx-auto max-w-5xl">
 		<div class="flex-1">
-			<a href="/" class="btn btn-ghost normal-case text-xl">Gym</a>
+			<a href="/" class="btn btn-ghost normal-case text-xl">Gymboost</a>
 		</div>
+
 		<div class="dropdown dropdown-end">
-			<button tabindex="0" class="btn btn-ghost btn-circle">
+			<label tabindex="0" class="btn btn-ghost btn-circle">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5"
@@ -23,7 +24,7 @@
 						d="M4 6h16M4 12h16M4 18h7"
 					/>
 				</svg>
-			</button>
+			</label>
 			<ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-40">
 				<li>
 					<a href="/">Workouts</a>
