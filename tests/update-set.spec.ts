@@ -21,11 +21,15 @@ test('update set', async ({ page }) => {
 
 	// act: click edit button
 	await page.getByTestId('updateSetBtn').first().click();
+	await page.waitForLoadState('networkidle');
 
 	// assert: form filled with set data
-	await expect(await page.getByPlaceholder('Weight').inputValue()).toEqual(String(set.weight));
-	await expect(await page.getByPlaceholder('Reps').inputValue()).toEqual(String(set.reps));
-	await expect(await page.getByPlaceholder('RIR').inputValue()).toEqual(String(set.rir));
+	const weightValue = await page.getByPlaceholder('Weight').inputValue();
+	const repsValue = await page.getByPlaceholder('Reps').inputValue();
+	const rirValue = await page.getByPlaceholder('RIR').inputValue();
+	expect(weightValue).toEqual(String(set.weight));
+	expect(repsValue).toEqual(String(set.reps));
+	expect(rirValue).toEqual(String(set.rir));
 
 	// act: change form values
 	await page.getByPlaceholder('Weight').clear();
