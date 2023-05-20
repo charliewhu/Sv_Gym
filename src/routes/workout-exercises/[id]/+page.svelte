@@ -25,4 +25,7 @@
 			</div>
 		</ListItem>
 	{/each}
+	<form action={`?/repeat`} method="POST" class="mt-3 text-center" use:enhance>
+		<button on:click|stopPropagation class=""> Repeat Last Set </button>
+	</form>
 </ul>
