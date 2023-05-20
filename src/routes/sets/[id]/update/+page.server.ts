@@ -2,13 +2,17 @@ import { prisma } from '$lib/server/prisma';
 import { error, redirect } from '@sveltejs/kit';
 
 export const load = async ({ params }) => {
-	return {
-		set: await prisma.workoutExerciseSet.findUnique({
-			where: {
-				id: Number(params.id)
-			}
-		})
-	};
+	try {
+		return {
+			set: await prisma.workoutExerciseSet.findUniqueOrThrow({
+				where: {
+					id: Number(params.id)
+				}
+			})
+		};
+	} catch (err) {
+		throw error(500, 'Could not find set');
+	}
 };
 
 export const actions = {
