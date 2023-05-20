@@ -8,7 +8,8 @@ on:
       - main
 
 env:
-  POSTGRES_URL: postgresql://prisma:prisma@localhost:5433/tests
+  POSTGRES_PRISMA_URL: postgresql://prisma:prisma@localhost:5433/tests
+  POSTGRES_URL_NON_POOLING: postgresql://prisma:prisma@localhost:5433/tests
 
 jobs:
   e2e-tests:
