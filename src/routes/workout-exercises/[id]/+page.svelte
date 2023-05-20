@@ -25,7 +25,14 @@
 			</div>
 		</ListItem>
 	{/each}
-	<form action={`?/repeat`} method="POST" class="mt-3 text-center" use:enhance>
-		<button on:click|stopPropagation class=""> Repeat Last Set </button>
-	</form>
+	{#if data.workoutExercise.workoutExerciseSets.length > 0}
+		<form action={`?/repeat`} method="POST" class="mt-3 text-center" use:enhance>
+			<input
+				type="hidden"
+				name="id"
+				value={data.workoutExercise.workoutExerciseSets.slice(-1)[0].id}
+			/>
+			<button on:click|stopPropagation class=""> Repeat Last Set </button>
+		</form>
+	{/if}
 </ul>

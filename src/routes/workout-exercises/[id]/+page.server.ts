@@ -55,5 +55,25 @@ export const actions = {
 		}
 
 		return { status: 204 };
+	},
+	repeat: async ({ request }) => {
+		const form = await request.formData();
+		const id = form.get('id');
+
+		try {
+			const set = await prisma.workoutExerciseSet.findUniqueOrThrow({ where: { id: Number(id) } });
+			await prisma.workoutExerciseSet.create({
+				data: {
+					workoutExercise: set.workoutExercise,
+					weight: set.weight,
+					reps: set.reps,
+					rir: set.rir
+				}
+			});
+		} catch (err) {
+			return fail(500, { message: 'could not delete set' });
+		}
+
+		return { status: 204 };
 	}
 };
