@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "prisma generate && vite build",
 		"preview": "vite preview",
 		"test": "pnpm docker:up && sleep 1 && pnpm prisma migrate reset --force && playwright test",
 		"test:close": "pnpm docker:up && pnpm prisma migrate deploy && playwright test && pnpm docker:down",
