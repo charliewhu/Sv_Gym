@@ -18,9 +18,9 @@
 		>
 			<div>{`${item.weight} x ${item.reps} x ${item.rir}`}</div>
 			<div class="flex flex-row">
-				<a href={`/sets/${item.id}/update`} class="btn btn-secondary" data-testid="updateSetBtn"
-					>Update</a
-				>
+				<a href={`/sets/${item.id}/update`} class="btn btn-secondary" data-testid="updateSetBtn">
+					Update
+				</a>
 				<form action={`?/delete`} method="POST" class="px-1" use:enhance>
 					<input type="hidden" name="id" value={item.id} />
 					<button class="btn btn-secondary" data-testid="deleteSetBtn">Delete</button>
