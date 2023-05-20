@@ -2,9 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 
 export const load = async () => {
-	const workouts = await prisma.workout.findMany();
-
-	return { workouts };
+	return { workouts: await prisma.workout.findMany() };
 };
 
 export const actions = {
