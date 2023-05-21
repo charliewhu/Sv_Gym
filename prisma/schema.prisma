@@ -34,7 +34,7 @@ model WorkoutExerciseSet {
   id              Int             @id @default(autoincrement())
   WorkoutExercise WorkoutExercise @relation(fields: [workoutExercise], references: [id])
   workoutExercise Int
-  weight          Float
+  weight          Int
   reps            Int
   rir             Int
 }
