@@ -18,7 +18,6 @@
 			<input
 				type="number"
 				inputmode="decimal"
-				step="0.5"
 				name="weight"
 				placeholder="Weight"
 				class="input input-bordered w-full max-w-xs flex flex-col"
