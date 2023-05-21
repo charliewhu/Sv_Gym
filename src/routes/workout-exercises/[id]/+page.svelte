@@ -13,7 +13,7 @@
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
-		<ListItem href={`/sets/${item.id}/update`} testId="setListItem">
+		<ListItem href={`sets/${item.id}/update`} testId="setListItem">
 			<div class="flex flex-row justify-between items-center">
 				<div>{`${item.weight} x ${item.reps} x ${item.rir}`}</div>
 				<form action={`?/delete`} method="POST" class="px-1" use:enhance>
