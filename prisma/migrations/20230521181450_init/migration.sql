@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "WorkoutExerciseSet" ALTER COLUMN "weight" SET DATA TYPE DOUBLE PRECISION;
