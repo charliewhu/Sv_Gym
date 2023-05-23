@@ -27,7 +27,6 @@ export const load = async ({ params }) => {
 export const actions = {
 	create: async (event) => {
 		const form = await superValidate(event, workoutExerciseSetSchema);
-		console.log(form);
 
 		if (!form.valid) {
 			return fail(400, { form });
