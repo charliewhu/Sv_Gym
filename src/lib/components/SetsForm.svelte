@@ -7,6 +7,7 @@
 	export let weight: number | null = null;
 	export let reps: number | null = null;
 	export let rir: number | null = null;
+	export let form: any;
 </script>
 
 <form {action} method="POST" use:enhance class="text-center">
@@ -52,6 +53,11 @@
 			/>
 		</div>
 	</div>
+	{#if form?.formErrors}
+		{#each form.formErrors as error}
+			<small class="text-error">{error}</small>
+		{/each}
+	{/if}
 	<div>
 		<button aria-label={label} class="btn btn-primary w-10/12">
 			{text}
