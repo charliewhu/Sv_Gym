@@ -10,7 +10,7 @@
 	<title>Workout {$page.params.id}</title>
 </svelte:head>
 
-<form action={`?/create`} method="POST" use:enhance class="text-center">
+<form action={`?/create`} method="POST" use:enhance class="text-center mb-4">
 	<select
 		name="exercise"
 		aria-label="exerciseDropdown"
@@ -27,7 +27,7 @@
 </form>
 
 <div class="text-center">
-	<a href={`/exercises/create?workoutId=${$page.params.id}`} class="">Create New Exercise</a>
+	<a href={`/exercises/create?workoutId=${$page.params.id}`} class="mb-4">Create New Exercise</a>
 </div>
 
 {#if !!data.workoutExercises.length}
