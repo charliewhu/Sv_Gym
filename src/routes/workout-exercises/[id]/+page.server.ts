@@ -46,7 +46,7 @@ export const actions = {
 			return fail(500, { message: 'could not add set' });
 		}
 
-		return { status: 201 };
+		return { form, status: 201 };
 	},
 	delete: async ({ request }) => {
 		const form = await request.formData();
