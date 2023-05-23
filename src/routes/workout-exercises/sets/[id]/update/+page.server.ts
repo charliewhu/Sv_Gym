@@ -1,14 +1,18 @@
 import { prisma } from '$lib/server/prisma';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
+import { workoutExerciseSetSchema } from '$lib/server/schema.js';
+import { superValidate } from 'sveltekit-superforms/server';
 
 export const load = async ({ params }) => {
 	try {
+		const set = await prisma.workoutExerciseSet.findUniqueOrThrow({
+			where: {
+				id: Number(params.id)
+			}
+		});
+
 		return {
-			set: await prisma.workoutExerciseSet.findUniqueOrThrow({
-				where: {
-					id: Number(params.id)
-				}
-			})
+			form: await superValidate(set, workoutExerciseSetSchema)
 		};
 	} catch (err) {
 		throw error(500, 'Could not find set');
@@ -16,29 +20,29 @@ export const load = async ({ params }) => {
 };
 
 export const actions = {
-	default: async ({ request, params }) => {
-		const form = await request.formData();
-		const weight = form.get('weight');
-		const reps = form.get('reps');
-		const rir = form.get('rir');
+	default: async (event) => {
+		const form = await superValidate(event, workoutExerciseSetSchema);
+
+		if (!form.valid) {
+			return fail(400, { form });
+		}
 
 		let set;
 
 		try {
 			set = await prisma.workoutExerciseSet.update({
 				where: {
-					id: Number(params.id)
+					id: Number(event.params.id)
 				},
 				data: {
-					weight: Number(weight),
-					reps: Number(reps),
-					rir: Number(rir)
+					weight: form.data.weight,
+					reps: form.data.reps,
+					rir: form.data.rir
 				}
 			});
 		} catch (err) {
 			throw error(500, 'Could not update set');
 		}
-
 		throw redirect(302, `/workout-exercises/${set.workoutExercise}`);
 	}
 };
