@@ -3,13 +3,14 @@
 	import ListItem from '$lib/components/ListItem.svelte';
 	import SetsForm from '$lib/components/SetsForm.svelte';
 	export let data;
+	export let form;
 </script>
 
 <svelte:head>
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
-<SetsForm action={`?/create`} text="Add" label="submitSet" />
+<SetsForm action={`?/create`} text="Add" label="submitSet" {form} />
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
