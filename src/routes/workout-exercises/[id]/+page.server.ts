@@ -24,18 +24,16 @@ export const load = async ({ params }) => {
 export const actions = {
 	create: async ({ request, params }) => {
 		const form = await request.formData();
-		const weight = form.get('weight');
-		const reps = form.get('reps');
-		const rir = form.get('rir');
+		const formData = Object.fromEntries(form);
 
 		// add exercise to workout
 		try {
 			await prisma.workoutExerciseSet.create({
 				data: {
 					workoutExercise: Number(params.id),
-					weight: Number(weight),
-					reps: Number(reps),
-					rir: Number(rir)
+					weight: Number(formData.weight),
+					reps: Number(formData.reps),
+					rir: Number(formData.rir)
 				}
 			});
 		} catch (err) {
