@@ -41,6 +41,6 @@
 	</div>
 </nav>
 
-<div class="container mx-auto max-w-4xl">
+<div class="container mx-auto max-w-4xl p-2">
 	<slot />
 </div>

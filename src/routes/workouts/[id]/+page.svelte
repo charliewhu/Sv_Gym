@@ -10,12 +10,8 @@
 	<title>Workout {$page.params.id}</title>
 </svelte:head>
 
-<form action={`?/create`} method="POST" use:enhance class="text-center mb-4">
-	<select
-		name="exercise"
-		aria-label="exerciseDropdown"
-		class="select select-bordered w-full max-w-xs"
-	>
+<form action={`?/create`} method="POST" use:enhance class="flex flex-row bg-white mb-4">
+	<select name="exercise" aria-label="exerciseDropdown" class="select select-bordered grow mx-2">
 		<option value="" />
 		{#each data.exercises as item}
 			<option data-testid="exerciseDropdownItem" value={item.id}>
@@ -23,7 +19,7 @@
 			</option>
 		{/each}
 	</select>
-	<button aria-label="addExercise" class="btn btn-primary">Add</button>
+	<button aria-label="addExercise" class="btn btn-primary mx-2">Add</button>
 </form>
 
 <div class="text-center">
