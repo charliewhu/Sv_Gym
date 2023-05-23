@@ -10,7 +10,7 @@
 	<title>Workout {$page.params.id}</title>
 </svelte:head>
 
-<form action={`?/create`} method="POST" use:enhance class="flex flex-row bg-white mb-4">
+<form action={`?/create`} method="POST" use:enhance class="flex flex-row mb-4">
 	<select name="exercise" aria-label="exerciseDropdown" class="select select-bordered grow mx-2">
 		<option value="" />
 		{#each data.exercises as item}
