@@ -12,13 +12,7 @@
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
-<SetsForm
-	weight={$form?.weight}
-	action={`?/create`}
-	text="Add"
-	label="submitSet"
-	errors={$errors}
-/>
+<SetsForm form={$form} action={`?/create`} text="Add" label="submitSet" errors={$errors} />
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
