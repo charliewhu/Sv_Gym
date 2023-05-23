@@ -1,5 +1,6 @@
 import { error, fail } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
+import { workoutExerciseSetSchema } from '$lib/server/schema.js';
 
 export const load = async ({ params }) => {
 	async function getWorkoutExercise() {
@@ -25,6 +26,19 @@ export const actions = {
 	create: async ({ request, params }) => {
 		const form = await request.formData();
 		const formData = Object.fromEntries(form);
+
+		try {
+			workoutExerciseSetSchema.parse({
+				weight: Number(formData.weight),
+				reps: Number(formData.reps),
+				rir: Number(formData.rir)
+			});
+		} catch (err) {
+			console.log(err.flatten());
+			return {
+				errors: err.flatten()
+			};
+		}
 
 		// add exercise to workout
 		try {
