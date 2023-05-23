@@ -1,8 +1,10 @@
 import { error, fail } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 import { workoutExerciseSetSchema } from '$lib/server/schema.js';
+import { superValidate } from 'sveltekit-superforms/server';
 
 export const load = async ({ params }) => {
+	const form = await superValidate(workoutExerciseSetSchema);
 	async function getWorkoutExercise() {
 		const workoutExercise = await prisma.workoutExercise.findUnique({
 			where: {
@@ -19,35 +21,26 @@ export const load = async ({ params }) => {
 		return workoutExercise;
 	}
 
-	return { workoutExercise: getWorkoutExercise() };
+	return { form, workoutExercise: getWorkoutExercise() };
 };
 
 export const actions = {
-	create: async ({ request, params }) => {
-		const form = await request.formData();
-		const formData = Object.fromEntries(form);
+	create: async (event) => {
+		const form = await superValidate(event, workoutExerciseSetSchema);
+		console.log(form);
 
-		try {
-			workoutExerciseSetSchema.parse({
-				weight: Number(formData.weight),
-				reps: Number(formData.reps),
-				rir: Number(formData.rir)
-			});
-		} catch (err) {
-			console.log(err.flatten());
-			return {
-				errors: err.flatten()
-			};
+		if (!form.valid) {
+			return fail(400, { form });
 		}
 
-		// add exercise to workout
+		// add set to db
 		try {
 			await prisma.workoutExerciseSet.create({
 				data: {
-					workoutExercise: Number(params.id),
-					weight: Number(formData.weight),
-					reps: Number(formData.reps),
-					rir: Number(formData.rir)
+					workoutExercise: Number(event.params.id),
+					weight: form.data.weight,
+					reps: form.data.reps,
+					rir: form.data.rir
 				}
 			});
 		} catch (err) {
