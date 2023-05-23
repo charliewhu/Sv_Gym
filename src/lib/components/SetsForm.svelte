@@ -2,13 +2,10 @@
 	import { enhance } from '$app/forms';
 
 	export let form: any;
+	export let errors: any;
 	export let action: string;
 	export let text: string;
 	export let label: string;
-	//export let weight: number | null = null;
-	export let reps: number | null = null;
-	export let rir: number | null = null;
-	export let errors: any;
 </script>
 
 <form {action} method="POST" use:enhance class="text-center">
@@ -37,7 +34,7 @@
 				name="reps"
 				placeholder="Reps"
 				class="input input-bordered w-full max-w-xs"
-				value={reps}
+				value={form.reps === 0 ? null : form.reps}
 			/>
 		</div>
 		<div class="pb-4">
@@ -50,7 +47,7 @@
 				name="rir"
 				placeholder="RIR"
 				class="input input-bordered w-full max-w-xs"
-				value={rir}
+				value={form.rir === 0 ? null : form.rir}
 			/>
 		</div>
 	</div>
