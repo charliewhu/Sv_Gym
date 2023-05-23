@@ -6,6 +6,7 @@ test('creating exercises', async ({ page }) => {
 
 	// go to exercises page
 	await page.goto('/exercises');
+	await expect(page).toHaveTitle('Exercises');
 
 	// assert no exercises exist
 	const exerciseListItems = await page.getByTestId('exerciseListItem');
@@ -14,6 +15,7 @@ test('creating exercises', async ({ page }) => {
 
 	// click add exercises
 	await page.locator('a[aria-label="createExercise"]').click();
+	await expect(page).toHaveTitle('Create Exercise');
 
 	// type exercise name
 	await page.getByPlaceholder('Name').fill(exerciseName);
