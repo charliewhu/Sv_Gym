@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { superForm } from 'sveltekit-superforms/client';
 	import ListItem from '$lib/components/ListItem.svelte';
 	import SetsForm from '$lib/components/SetsForm.svelte';
 	export let data;
 
-	const { form, errors } = superForm(data.form);
+	const { form, errors, enhance } = superForm(data.form);
 </script>
 
 <svelte:head>
