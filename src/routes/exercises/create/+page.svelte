@@ -1,8 +1,12 @@
+<script>
+	import { enhance } from '$app/forms';
+</script>
+
 <svelte:head>
 	<title>Create Exercise</title>
 </svelte:head>
 
-<form method="POST" class="text-center">
+<form method="POST" use:enhance class="text-center">
 	<div class="pb-6">
 		<input
 			type="text"
