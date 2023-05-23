@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { superForm } from 'sveltekit-superforms/client';
-	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
-
 	import ListItem from '$lib/components/ListItem.svelte';
 	import SetsForm from '$lib/components/SetsForm.svelte';
 	export let data;
@@ -13,8 +11,6 @@
 <svelte:head>
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
-
-<SuperDebug data={$form} />
 
 <SetsForm
 	weight={$form?.weight}
