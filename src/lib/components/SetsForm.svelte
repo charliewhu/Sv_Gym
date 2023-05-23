@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 
+	export let form: any;
 	export let action: string;
 	export let text: string;
 	export let label: string;
-	export let weight: number | null = null;
+	//export let weight: number | null = null;
 	export let reps: number | null = null;
 	export let rir: number | null = null;
 	export let errors: any;
@@ -23,7 +24,7 @@
 				name="weight"
 				placeholder="Weight"
 				class="input input-bordered w-full max-w-xs flex flex-col"
-				value={weight === 0 ? null : weight}
+				value={form.weight === 0 ? null : form.weight}
 			/>
 		</div>
 		<div class="pb-4">
