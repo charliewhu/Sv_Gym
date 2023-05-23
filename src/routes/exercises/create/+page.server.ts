@@ -2,7 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { prisma } from '$lib/server/prisma';
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, url }) => {
 		const form = await request.formData();
 		const name = form.get('name');
 
@@ -17,6 +17,10 @@ export const actions = {
 			return fail(500, { message: 'could not create exercise' });
 		}
 
-		throw redirect(301, '/exercises');
+		const workoutId = url.searchParams.get('workoutId');
+
+		if (!workoutId) throw redirect(301, `/exercises`);
+
+		throw redirect(301, `/workouts/${workoutId}`);
 	}
 };
