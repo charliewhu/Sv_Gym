@@ -27,8 +27,8 @@ test.describe('Validate set submission', async () => {
 		await page.locator('button', { hasText: 'Add' }).click();
 
 		// keep form populated
-		const weightField = await page.getByPlaceholder('Weight').innerText();
-		expect(weightField).toBe('100');
+		const weightField = await page.getByPlaceholder('Weight').inputValue();
+		expect(weightField).toEqual('100');
 
 		// show error
 		await expect(page.getByText(errorMsg)).toBeVisible();
