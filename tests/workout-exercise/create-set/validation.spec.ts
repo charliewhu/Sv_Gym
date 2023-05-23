@@ -22,12 +22,12 @@ test.describe('Validate set submission', async () => {
 
 		// blank fields
 		await submitButton.click();
-		await expect(page.innerText).toContain(errorMsg);
+		await expect(page.getByText(errorMsg)).toBeVisible();
 
 		// just weight
 		await page.getByPlaceholder('Weight').fill('100');
 		await submitButton.click();
-		await expect(page.innerText).toContain(errorMsg);
+		await expect(page.getByText(errorMsg)).toBeVisible();
 
 		// just reps
 	});
