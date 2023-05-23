@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Create Exercise</title>
+</svelte:head>
+
 <form method="POST" class="text-center">
 	<div class="pb-6">
 		<input
