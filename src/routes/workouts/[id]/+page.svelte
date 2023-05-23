@@ -26,7 +26,9 @@
 	<button aria-label="addExercise" class="btn btn-primary">Add</button>
 </form>
 
-<div class="text-center"><a href="/exercises/create" class="">Create New Exercise</a></div>
+<div class="text-center">
+	<a href={`/exercises/create?workoutId=${$page.params.id}`} class="">Create New Exercise</a>
+</div>
 
 {#if !!data.workoutExercises.length}
 	<ul data-testid="exerciseList">
