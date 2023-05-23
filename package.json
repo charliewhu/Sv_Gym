@@ -44,6 +44,7 @@
 	"dependencies": {
 		"@prisma/client": "^4.13.0",
 		"daisyui": "^2.51.5",
-		"dotenv": "^16.0.3"
+		"dotenv": "^16.0.3",
+		"zod": "^3.21.4"
 	}
 }
