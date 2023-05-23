@@ -12,7 +12,7 @@ test('create exercise from workout page', async ({ page }) => {
 	await page.goto(`/workouts/${workout.id}`);
 
 	// act: click create exercise btn
-	await page.locator('button', { hasText: 'Create New Exercise' }).click();
+	await page.locator('a', { hasText: 'Create New Exercise' }).click();
 
 	// assert: on create exercise page
 	await expect(page).toHaveTitle('Create Exercise');
