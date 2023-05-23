@@ -1,5 +1,5 @@
-import { test, expect } from '../base.ts';
-import { prisma } from '../../src/lib/server/prisma.ts';
+import { test, expect } from '../../base.ts';
+import { prisma } from '../../../src/lib/server/prisma.ts';
 
 test('creating an item', async ({ page }) => {
 	// variables
