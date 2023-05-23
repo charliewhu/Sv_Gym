@@ -16,8 +16,20 @@ test.describe('Validate set submission', async () => {
 		await page.goto(`workout-exercises/${workoutExercise.id}`);
 	});
 
-	test.skip('at least 2 fields filled', async ({ page }) => {
-		await expect(1).toEqual(1);
+	test('at least 2 fields filled', async ({ page }) => {
+		const errorMsg = 'At least 2 fields required';
+		const submitButton = page.locator('button', { hasText: 'Add' });
+
+		// blank fields
+		await submitButton.click();
+		await expect(page.innerText).toContain(errorMsg);
+
+		// just weight
+		await page.getByPlaceholder('Weight').fill('100');
+		await submitButton.click();
+		await expect(page.innerText).toContain(errorMsg);
+
+		// just reps
 	});
 
 	test.skip('negative values', async ({ page }) => {
