@@ -7,7 +7,7 @@ export const workoutExerciseSetSchema = z
 		rir: z.number()
 	})
 	.superRefine((val, ctx) => {
-		if (!val.weight && !val.reps && !val.rir) {
+		if (Number(!!val.weight) + Number(!!val.reps) + Number(!!val.rir) < 2) {
 			ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'At least 2 fields required' });
 		}
 	});
