@@ -1,16 +1,28 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { superForm } from 'sveltekit-superforms/client';
+	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
+
 	import ListItem from '$lib/components/ListItem.svelte';
 	import SetsForm from '$lib/components/SetsForm.svelte';
 	export let data;
-	export let form;
+
+	const { form, errors } = superForm(data.form);
 </script>
 
 <svelte:head>
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
-<SetsForm action={`?/create`} text="Add" label="submitSet" {form} />
+<SuperDebug data={$form} />
+
+<SetsForm
+	weight={$form?.weight}
+	action={`?/create`}
+	text="Add"
+	label="submitSet"
+	errors={$errors}
+/>
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}

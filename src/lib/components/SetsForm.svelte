@@ -7,7 +7,7 @@
 	export let weight: number | null = null;
 	export let reps: number | null = null;
 	export let rir: number | null = null;
-	export let form: any;
+	export let errors: any;
 </script>
 
 <form {action} method="POST" use:enhance class="text-center">
@@ -23,7 +23,7 @@
 				name="weight"
 				placeholder="Weight"
 				class="input input-bordered w-full max-w-xs flex flex-col"
-				value={weight}
+				value={weight === 0 ? null : weight}
 			/>
 		</div>
 		<div class="pb-4">
@@ -53,8 +53,8 @@
 			/>
 		</div>
 	</div>
-	{#if form?.errors?.formErrors}
-		{#each form.errors.formErrors as error}
+	{#if errors?._errors}
+		{#each errors._errors as error}
 			<small class="text-error">{error}</small>
 		{/each}
 	{/if}
