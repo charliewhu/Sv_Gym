@@ -53,8 +53,8 @@
 			/>
 		</div>
 	</div>
-	{#if form?.formErrors}
-		{#each form.formErrors as error}
+	{#if form?.errors?.formErrors}
+		{#each form.errors.formErrors as error}
 			<small class="text-error">{error}</small>
 		{/each}
 	{/if}
