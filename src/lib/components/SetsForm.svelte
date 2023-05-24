@@ -11,18 +11,23 @@
 <form {action} method="POST" use:enhance class="text-center">
 	<div class="flex justify-evenly">
 		<div class="pb-4">
-			<label class="label" for="weight">
-				<span class="label-text">Weight</span>
-			</label>
-			<input
-				type="number"
-				inputmode="decimal"
-				step="0.5"
-				name="weight"
-				placeholder="Weight"
-				class="input input-bordered w-full max-w-xs flex flex-col"
-				value={form.weight === 0 ? null : form.weight}
-			/>
+			<div>
+				<label class="label" for="weight">
+					<span class="label-text">Weight</span>
+				</label>
+				<input
+					type="number"
+					inputmode="decimal"
+					step="0.5"
+					name="weight"
+					placeholder="Weight"
+					class="input input-bordered w-full max-w-xs flex flex-col"
+					value={form.weight === 0 ? null : form.weight}
+				/>
+			</div>
+			{#if errors?.weight}
+				<small>{errors.weight[0]}</small>
+			{/if}
 		</div>
 		<div class="pb-4">
 			<label class="label" for="reps">
