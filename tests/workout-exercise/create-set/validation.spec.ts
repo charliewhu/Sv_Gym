@@ -34,8 +34,16 @@ test.describe('Validate set submission', async () => {
 		await expect(page.getByText(errorMsg)).toBeVisible();
 	});
 
-	test.skip('negative values', async ({ page }) => {
-		await expect(1).toEqual(1);
+	test('negative values', async ({ page }) => {
+		await page.getByPlaceholder('Weight').fill('-1');
+		await page.getByPlaceholder('Reps').fill('-1');
+		await page.getByPlaceholder('RIR').fill('-1');
+		await page.locator('button', { hasText: 'Add' }).click();
+
+		// show error
+		await expect(page.getByText('Weight must not be negative')).toBeVisible();
+		await expect(page.getByText('Reps must not be negative')).toBeVisible();
+		await expect(page.getByText('RIR must not be negative')).toBeVisible();
 	});
 
 	test.skip('decimal reps/rir', async ({ page }) => {
