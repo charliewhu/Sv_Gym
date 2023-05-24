@@ -60,6 +60,12 @@
 		{#if errors?.weight}
 			<small class="text-error">{errors.weight[0]}</small>
 		{/if}
+		{#if errors?.reps}
+			<small class="text-error">{errors.reps[0]}</small>
+		{/if}
+		{#if errors?.rir}
+			<small class="text-error">{errors.rir[0]}</small>
+		{/if}
 	</div>
 	<div>
 		<button aria-label={label} class="btn btn-primary w-10/12">
