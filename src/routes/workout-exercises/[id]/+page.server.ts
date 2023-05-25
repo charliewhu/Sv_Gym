@@ -58,7 +58,9 @@ export const actions = {
 			return fail(500, { message: 'could not delete set' });
 		}
 
-		return { status: 204 };
+		const returnForm = await superValidate(workoutExerciseSetSchema);
+
+		return { form: returnForm, status: 204 };
 	},
 	repeat: async ({ request }) => {
 		const form = await request.formData();
@@ -78,6 +80,7 @@ export const actions = {
 			return fail(500, { message: 'could not delete set' });
 		}
 
-		return { status: 204 };
+		const returnForm = await superValidate(workoutExerciseSetSchema);
+		return { form: returnForm, status: 204 };
 	}
 };
