@@ -8,7 +8,11 @@ export const workoutExerciseSetSchema = z
 			.nonnegative({ message: 'Reps must not be negative' })
 			.int({ message: 'Reps must be a whole number' })
 			.nullable(),
-		rir: z.number().nonnegative({ message: 'RIR must not be negative' }).nullable()
+		rir: z
+			.number()
+			.nonnegative({ message: 'RIR must not be negative' })
+			.max(4, { message: 'RIR must be between 0 and 4' })
+			.nullable()
 	})
 	.superRefine((val, ctx) => {
 		if (Number(!!val.weight) + Number(!!val.reps) + Number(!!val.rir) < 2) {
