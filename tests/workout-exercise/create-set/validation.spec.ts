@@ -53,7 +53,7 @@ test.describe('Validate set submission', async () => {
 		await page.locator('button', { hasText: 'Add' }).click();
 
 		// show error
-		await expect(page.getByTestId('setListItem')).not.toBeVisible();
+		await expect(page.getByText('Reps must be a whole number')).toBeVisible();
 	});
 
 	test.skip('rir >= 5', async ({ page }) => {
@@ -63,6 +63,6 @@ test.describe('Validate set submission', async () => {
 		await page.locator('button', { hasText: 'Add' }).click();
 
 		// show error
-		await expect(page.getByTestId('setListItem')).not.toBeVisible();
+		await expect(page.getByText('RIR must be between 0 and 4')).toBeVisible();
 	});
 });
