@@ -2,18 +2,9 @@ import { z } from 'zod';
 
 export const workoutExerciseSetSchema = z
 	.object({
-		weight: z
-			.number()
-			.nonnegative({ message: 'Weight must not be negative' })
-			.default('' as unknown as number), // set default to empty string not 0
-		reps: z
-			.number()
-			.nonnegative({ message: 'Reps must not be negative' })
-			.default('' as unknown as number),
-		rir: z
-			.number()
-			.nonnegative({ message: 'RIR must not be negative' })
-			.default('' as unknown as number)
+		weight: z.number().nonnegative({ message: 'Weight must not be negative' }),
+		reps: z.number().nonnegative({ message: 'Reps must not be negative' }),
+		rir: z.number().nonnegative({ message: 'RIR must not be negative' })
 	})
 	.superRefine((val, ctx) => {
 		if (Number(!!val.weight) + Number(!!val.reps) + Number(!!val.rir) < 2) {
