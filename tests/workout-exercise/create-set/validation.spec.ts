@@ -46,8 +46,14 @@ test.describe('Validate set submission', async () => {
 		await expect(page.getByText('RIR must not be negative')).toBeVisible();
 	});
 
-	test.skip('decimal reps/rir', async ({ page }) => {
-		await expect(1).toEqual(1);
+	test('decimal reps', async ({ page }) => {
+		await page.getByPlaceholder('Weight').fill('100');
+		await page.getByPlaceholder('Reps').fill('0.5');
+		await page.getByPlaceholder('RIR').fill('2');
+		await page.locator('button', { hasText: 'Add' }).click();
+
+		// show error
+		await expect(page.getByText('Reps must be a whole number')).toBeVisible();
 	});
 
 	test.skip('rir >= 5', async ({ page }) => {
