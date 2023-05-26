@@ -1,6 +1,6 @@
 import { prisma } from '$lib/server/prisma';
 import { error, fail, redirect } from '@sveltejs/kit';
-import { workoutExerciseSetSchema } from '$lib/server/schema.js';
+import { workoutExerciseSetSchema } from '$lib/schema';
 import { superValidate } from 'sveltekit-superforms/server';
 
 export const load = async ({ params }) => {

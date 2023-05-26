@@ -3,7 +3,10 @@ import { z } from 'zod';
 export const workoutExerciseSetSchema = z
 	.object({
 		weight: z.number().nonnegative({ message: 'Weight must not be negative' }),
-		reps: z.number().nonnegative({ message: 'Reps must not be negative' }),
+		reps: z
+			.number()
+			.nonnegative({ message: 'Reps must not be negative' })
+			.int({ message: 'Reps must be a whole number' }),
 		rir: z.number().nonnegative({ message: 'RIR must not be negative' })
 	})
 	.superRefine((val, ctx) => {
