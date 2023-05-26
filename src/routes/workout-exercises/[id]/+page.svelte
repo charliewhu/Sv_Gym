@@ -4,14 +4,14 @@
 	import SetsForm from '$lib/components/SetsForm.svelte';
 	export let data;
 
-	const { form, errors, enhance } = superForm(data.form);
+	const { enhance } = superForm(data.form);
 </script>
 
 <svelte:head>
 	<title>{data.workoutExercise.Exercise.name}</title>
 </svelte:head>
 
-<SetsForm form={$form} errors={$errors} action={`?/create`} text="Add" label="submitSet" />
+<SetsForm data={data.form} action={`?/create`} text="Add" label="submitSet" />
 
 <ul>
 	{#each data.workoutExercise.workoutExerciseSets as item}
