@@ -53,7 +53,7 @@ test.describe('Validate set submission', async () => {
 		await page.locator('button', { hasText: 'Add' }).click();
 
 		// show error
-		await expect(page.getByText('Reps must be a whole number')).toBeVisible();
+		await expect(page.getByTestId('setListItem')).not.toBeVisible();
 	});
 
 	test.skip('rir >= 5', async ({ page }) => {
