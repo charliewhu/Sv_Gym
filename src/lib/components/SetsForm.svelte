@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { Validation } from 'sveltekit-superforms';
-	import type { WorkoutExerciseSetSchema } from '$lib/schema';
+	import { workoutExerciseSetSchema, type WorkoutExerciseSetSchema } from '$lib/schema';
 	import { superForm } from 'sveltekit-superforms/client';
 
 	export let data: Validation<WorkoutExerciseSetSchema>;
 
-	const { form, errors, enhance } = superForm(data);
+	const { form, errors, enhance } = superForm(data, { validators: workoutExerciseSetSchema });
 
 	export let action: string;
 	export let text: string;
