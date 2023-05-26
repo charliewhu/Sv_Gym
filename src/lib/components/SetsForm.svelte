@@ -25,7 +25,7 @@
 				name="weight"
 				placeholder="Weight"
 				class="input input-bordered w-full max-w-xs flex flex-col"
-				value={$form.weight === 0 ? null : $form.weight}
+				bind:value={$form.weight}
 			/>
 		</div>
 		<div>
@@ -38,7 +38,7 @@
 				name="reps"
 				placeholder="Reps"
 				class="input input-bordered w-full max-w-xs"
-				value={$form.reps === 0 ? null : $form.reps}
+				bind:value={$form.reps}
 			/>
 		</div>
 		<div>
@@ -51,7 +51,7 @@
 				name="rir"
 				placeholder="RIR"
 				class="input input-bordered w-full max-w-xs"
-				value={$form.rir === 0 ? null : $form.rir}
+				bind:value={$form.rir}
 			/>
 		</div>
 	</div>
