@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import type { Validation } from 'sveltekit-superforms';
+	import type { WorkoutExerciseSetSchema } from '$lib/schema';
+	import { superForm } from 'sveltekit-superforms/client';
 
-	export let form: any;
-	export let errors: any;
+	export let data: Validation<WorkoutExerciseSetSchema>;
+
+	const { form, errors, enhance } = superForm(data);
+
 	export let action: string;
 	export let text: string;
 	export let label: string;
@@ -21,7 +25,7 @@
 				name="weight"
 				placeholder="Weight"
 				class="input input-bordered w-full max-w-xs flex flex-col"
-				value={form.weight === 0 ? null : form.weight}
+				value={$form.weight === 0 ? null : $form.weight}
 			/>
 		</div>
 		<div>
@@ -34,7 +38,7 @@
 				name="reps"
 				placeholder="Reps"
 				class="input input-bordered w-full max-w-xs"
-				value={form.reps === 0 ? null : form.reps}
+				value={$form.reps === 0 ? null : $form.reps}
 			/>
 		</div>
 		<div>
@@ -47,24 +51,24 @@
 				name="rir"
 				placeholder="RIR"
 				class="input input-bordered w-full max-w-xs"
-				value={form.rir === 0 ? null : form.rir}
+				value={$form.rir === 0 ? null : $form.rir}
 			/>
 		</div>
 	</div>
 	<div class="flex flex-col mb-4">
-		{#if errors?._errors}
-			{#each errors._errors as error}
+		{#if $errors?._errors}
+			{#each $errors._errors as error}
 				<small class="text-error">{error}</small>
 			{/each}
 		{/if}
-		{#if errors?.weight}
-			<small class="text-error">{errors.weight[0]}</small>
+		{#if $errors?.weight}
+			<small class="text-error">{$errors.weight[0]}</small>
 		{/if}
-		{#if errors?.reps}
-			<small class="text-error">{errors.reps[0]}</small>
+		{#if $errors?.reps}
+			<small class="text-error">{$errors.reps[0]}</small>
 		{/if}
-		{#if errors?.rir}
-			<small class="text-error">{errors.rir[0]}</small>
+		{#if $errors?.rir}
+			<small class="text-error">{$errors.rir[0]}</small>
 		{/if}
 	</div>
 	<div>
