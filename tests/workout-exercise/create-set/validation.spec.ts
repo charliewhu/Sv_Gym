@@ -41,9 +41,9 @@ test.describe('Validate set submission', async () => {
 		await page.locator('button', { hasText: 'Add' }).click();
 
 		// show error
-		await expect(page.getByText('Weight must not be negative')).toBeVisible();
-		await expect(page.getByText('Reps must not be negative')).toBeVisible();
-		await expect(page.getByText('RIR must not be negative')).toBeVisible();
+		await expect(page.getByText('Weight must be positive')).toBeVisible();
+		await expect(page.getByText('Reps must be positive')).toBeVisible();
+		await expect(page.getByText('RIR must be positive')).toBeVisible();
 	});
 
 	test('decimal reps', async ({ page }) => {
