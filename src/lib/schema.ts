@@ -2,15 +2,15 @@ import { z } from 'zod';
 
 export const workoutExerciseSetSchema = z
 	.object({
-		weight: z.number().nonnegative({ message: 'Weight must not be negative' }).nullable(),
+		weight: z.number().nonnegative({ message: 'Weight must be positive' }).nullable(),
 		reps: z
 			.number()
-			.nonnegative({ message: 'Reps must not be negative' })
+			.nonnegative({ message: 'Reps must be positive' })
 			.int({ message: 'Reps must be a whole number' })
 			.nullable(),
 		rir: z
 			.number()
-			.nonnegative({ message: 'RIR must not be negative' })
+			.nonnegative({ message: 'RIR must be positive' })
 			.max(4, { message: 'RIR must be between 0 and 4' })
 			.nullable()
 	})
