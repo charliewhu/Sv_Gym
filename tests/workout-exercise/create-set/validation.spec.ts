@@ -57,6 +57,12 @@ test.describe('Validate set submission', async () => {
 	});
 
 	test.skip('rir >= 5', async ({ page }) => {
-		await expect(1).toEqual(1);
+		await page.getByPlaceholder('Weight').fill('100');
+		await page.getByPlaceholder('Reps').fill('2');
+		await page.getByPlaceholder('RIR').fill('6');
+		await page.locator('button', { hasText: 'Add' }).click();
+
+		// show error
+		await expect(page.getByTestId('setListItem')).not.toBeVisible();
 	});
 });
