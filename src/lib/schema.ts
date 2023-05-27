@@ -7,7 +7,7 @@ export const workoutExerciseSetSchema = z
 			.number()
 			.nonnegative({ message: 'Reps must be positive' })
 			.int({ message: 'Reps must be a whole number' })
-			.max(4, { message: 'Reps must be less than 50' })
+			.max(50, { message: 'Reps must be less than 50' })
 			.nullable(),
 		rir: z
 			.number()
