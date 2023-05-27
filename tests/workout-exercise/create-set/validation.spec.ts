@@ -56,7 +56,17 @@ test.describe('Validate set submission', async () => {
 		await expect(page.getByText('Reps must be a whole number')).toBeVisible();
 	});
 
-	test.skip('rir >= 5', async ({ page }) => {
+	test('high reps', async ({ page }) => {
+		await page.getByPlaceholder('Weight').fill('100');
+		await page.getByPlaceholder('Reps').fill('55');
+		await page.getByPlaceholder('RIR').fill('2');
+		await page.locator('button', { hasText: 'Add' }).click();
+
+		// show error
+		await expect(page.getByText('Reps must be less than 50')).toBeVisible();
+	});
+
+	test('rir >= 5', async ({ page }) => {
 		await page.getByPlaceholder('Weight').fill('100');
 		await page.getByPlaceholder('Reps').fill('2');
 		await page.getByPlaceholder('RIR').fill('6');
