@@ -8,7 +8,7 @@ export const actions = {
 
 		let routine;
 		try {
-			routine = await prisma.routine.create({ data: { name: data.name } });
+			routine = await prisma.routine.create({ data: { name: String(data.name) } });
 		} catch (err) {
 			return fail(404, { message: 'Could not create routine' });
 		}
