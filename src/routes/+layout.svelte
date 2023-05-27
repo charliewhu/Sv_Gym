@@ -34,6 +34,9 @@
 					<a href="/">Workouts</a>
 				</li>
 				<li>
+					<a href="/routines">Routines</a>
+				</li>
+				<li>
 					<a href="/exercises">Exercises</a>
 				</li>
 			</ul>
