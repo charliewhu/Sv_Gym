@@ -13,12 +13,12 @@ test('create routine', async ({ page }) => {
 	await page.goto('/routines');
 	await expect(page).toHaveTitle('Routines');
 
-	// act: click create
-	await page.locator('a', { hasText: 'Create' }).click();
-	await expect(page).toHaveTitle('Create Routine');
-
 	// act: type name
 	await page.getByPlaceholder('Name').fill(routineName);
+
+	// act: click create
+	await page.locator('a', { hasText: 'Create' }).click();
+	await expect(page).toHaveTitle(routineName);
 
 	// act: add exercise
 	const exerciseDropdown = page.getByLabel('exerciseDropdown');
