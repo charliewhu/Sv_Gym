@@ -17,7 +17,7 @@ test('create routine', async ({ page }) => {
 	await page.getByPlaceholder('Name').fill(routineName);
 
 	// act: click create
-	await page.locator('a', { hasText: 'Create' }).click();
+	await page.locator('button', { hasText: 'Create' }).click();
 	await expect(page).toHaveTitle(routineName);
 
 	// act: add exercise
