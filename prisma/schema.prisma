@@ -38,3 +38,8 @@ model WorkoutExerciseSet {
   workoutExercise Int
   WorkoutExercise WorkoutExercise @relation(fields: [workoutExercise], references: [id])
 }
+
+model Routine {
+  id   Int    @id @default(autoincrement())
+  name String
+}
