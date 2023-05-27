@@ -41,5 +41,5 @@ model WorkoutExerciseSet {
 
 model Routine {
   id   Int    @id @default(autoincrement())
-  name String
+  name String @unique
 }
