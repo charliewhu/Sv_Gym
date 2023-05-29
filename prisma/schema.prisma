@@ -14,6 +14,7 @@ model Exercise {
   id               Int               @id @default(autoincrement())
   name             String
   workoutExercises WorkoutExercise[]
+  RoutineExercises RoutineExercise[]
 }
 
 model Workout {
@@ -40,6 +41,15 @@ model WorkoutExerciseSet {
 }
 
 model Routine {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id               Int               @id @default(autoincrement())
+  name             String            @unique
+  RoutineExercises RoutineExercise[]
+}
+
+model RoutineExercise {
+  id       Int      @id @default(autoincrement())
+  routine  Int
+  exercise Int
+  Routine  Routine  @relation(fields: [routine], references: [id])
+  Exercise Exercise @relation(fields: [exercise], references: [id])
 }
