@@ -9,11 +9,11 @@
 	<title>{data.routine.name}</title>
 </svelte:head>
 
-<ExerciseDropdown action="" exercises={data.exercises} />
+<ExerciseDropdown action="?/create" exercises={data.exercises} />
 
-{#if !!data.routineExercises.length}
+{#if !!data.routine.RoutineExercises.length}
 	<ul data-testid="exerciseList">
-		{#each data.routineExercises as routineExercise}
+		{#each data.routine.RoutineExercises as routineExercise}
 			<ListItem testId="exerciseListItem">
 				<div class="flex flex-row justify-between items-center">
 					<div>{routineExercise.Exercise.name}</div>
