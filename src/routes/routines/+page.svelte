@@ -1,3 +1,9 @@
+<script>
+	import ListItem from '$lib/components/ListItem.svelte';
+
+	export let data;
+</script>
+
 <svelte:head>
 	<title>Routines</title>
 </svelte:head>
@@ -12,3 +18,13 @@
 
 	<button type="submit" class="btn btn-primary">Create</button>
 </form>
+
+<ul>
+	{#each data.routines as routine}
+		<ListItem href={`routines/${routine.id}`} testId="routineListItem">
+			<div class="flex flex-row justify-between items-center">
+				<div>{routine.name}</div>
+			</div>
+		</ListItem>
+	{/each}
+</ul>
