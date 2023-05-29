@@ -21,5 +21,5 @@ test('start Workout from Routine', async ({ page }) => {
 	await expect(await page.title()).toContain('Workout');
 
 	// assert: exercise from routine is in the list
-	await expect(page.getByText(exerciseName)).toBeVisible();
+	await expect(page.getByTestId('exerciseListItem')).toContainText(exerciseName);
 });
