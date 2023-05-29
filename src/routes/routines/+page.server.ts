@@ -1,6 +1,10 @@
 import { prisma } from '$lib/server/prisma';
 import { fail, redirect } from '@sveltejs/kit';
 
+export const load = async () => {
+	return { routines: await prisma.routine.findMany({}) };
+};
+
 export const actions = {
 	default: async ({ request }) => {
 		const form = await request.formData();
