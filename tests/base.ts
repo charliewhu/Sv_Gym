@@ -12,6 +12,8 @@ export const test = base.extend({
 		await prisma.workoutExerciseSet.deleteMany();
 		await prisma.workoutExercise.deleteMany();
 		await prisma.workout.deleteMany();
+		await prisma.routineExercise.deleteMany();
+		await prisma.routine.deleteMany();
 		await prisma.exercise.deleteMany();
 		console.log('Old items cleared from db');
 
