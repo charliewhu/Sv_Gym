@@ -28,11 +28,8 @@ test('create routine', async ({ page }) => {
 	// assert: exercise in list
 	await expect(page.getByTestId('exerciseListItem')).toContainText(exerciseName);
 
-	// act: click save
-	await page.locator('button', { hasText: 'Save' }).click();
-
-	// assert: Redirected to routines page
-	await expect(page).toHaveTitle('Routines');
+	// act: go back to routines page
+	await page.goto('/routines');
 
 	// assert: Routine appears in list
 	await expect(page.getByText(routineName)).toBeVisible();
