@@ -12,7 +12,14 @@ test('start Workout from Routine', async ({ page }) => {
 	await prisma.routineExercise.create({ data: { routine: routine.id, exercise: exercise.id } });
 
 	// arrange: go to routines page
+	await page.goto('/routines');
+
 	// act: click routine workout button
+	await page.getByTestId('startWorkoutBtn').click();
+
 	// assert: on workout page
+	await expect(await page.title()).toContain('Workout');
+
 	// assert: exercise from routine is in the list
+	await expect(page.getByText(exerciseName)).toBeVisible();
 });
