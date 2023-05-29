@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import ExerciseDropdown from '$lib/components/ExerciseDropdown.svelte';
 	import ListItem from '$lib/components/ListItem.svelte';
