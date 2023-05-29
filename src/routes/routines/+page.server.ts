@@ -13,6 +13,6 @@ export const actions = {
 			return fail(404, { message: 'Could not create routine' });
 		}
 
-		throw redirect(301, `/routines/${routine.name}`);
+		throw redirect(301, `/routines/${routine.id}`);
 	}
 };
