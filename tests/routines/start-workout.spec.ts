@@ -18,6 +18,7 @@ test('start Workout from Routine', async ({ page }) => {
 	await page.getByTestId('startWorkoutBtn').click();
 
 	// assert: on workout page
+	await page.waitForLoadState('networkidle');
 	await expect(await page.title()).toContain('Workout');
 
 	// assert: exercise from routine is in the list
