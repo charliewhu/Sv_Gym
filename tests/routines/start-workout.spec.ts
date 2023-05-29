@@ -1,7 +1,7 @@
 import { test, expect } from '../base.ts';
 import { prisma } from '../../src/lib/server/prisma.ts';
 
-test('create routine', async ({ page }) => {
+test('start Workout from Routine', async ({ page }) => {
 	// arrange: variables
 	const exerciseName = 'Test Exercise';
 	const routineName = 'Test Routine Day';
