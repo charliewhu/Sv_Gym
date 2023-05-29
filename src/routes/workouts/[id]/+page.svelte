@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
+	import ExerciseDropdown from '$lib/components/ExerciseDropdown.svelte';
 	import ListItem from '$lib/components/ListItem.svelte';
 
 	export let data;
@@ -10,17 +11,7 @@
 	<title>Workout {$page.params.id}</title>
 </svelte:head>
 
-<form action={`?/create`} method="POST" use:enhance class="flex flex-row mb-4">
-	<select name="exercise" aria-label="exerciseDropdown" class="select select-bordered grow mx-2">
-		<option value="" />
-		{#each data.exercises as item}
-			<option data-testid="exerciseDropdownItem" value={item.id}>
-				{item.name}
-			</option>
-		{/each}
-	</select>
-	<button aria-label="addExercise" class="btn btn-primary mx-2">Add</button>
-</form>
+<ExerciseDropdown action={`?/create`} exercises={data.exercises} />
 
 <div class="text-center">
 	<a href={`/exercises/create?workoutId=${$page.params.id}`} class="mb-4">Create New Exercise</a>
