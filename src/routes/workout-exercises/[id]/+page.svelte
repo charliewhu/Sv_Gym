@@ -14,7 +14,8 @@
 <SetsForm data={data.form} action={`?/create`} text="Add" label="submitSet" />
 
 <form action={`?/previousWorkout`} method="POST" class="my-3 text-center" use:enhance>
-	<input type="hidden" name="workoutExerciseId" value={data.workoutExercise.workout} />
+	<input type="hidden" name="workoutExerciseId" value={data.workoutExercise.id} />
+	<input type="hidden" name="exerciseId" value={data.workoutExercise.exercise} />
 	<button on:click|stopPropagation class="">Repeat Previous Workout Sets</button>
 </form>
 
