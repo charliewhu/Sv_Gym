@@ -4,7 +4,7 @@ import { prisma } from '../../src/lib/server/prisma.ts';
 test('Use sets from a previous workout', async ({ page }) => {
 	// arrange: variables
 	const exerciseName = 'Test Exercise';
-	const setsValues = [
+	const setsValues: { weight: number; reps: number; rir: number }[] = [
 		{ weight: 100, reps: 5, rir: 3 },
 		{ weight: 110, reps: 4, rir: 2 },
 		{ weight: 120, reps: 3, rir: 1 }
@@ -17,7 +17,7 @@ test('Use sets from a previous workout', async ({ page }) => {
 		data: { workout: workout.id, exercise: exercise.id }
 	});
 	const setsInput = setsValues.map((obj) => ({ ...obj, workoutExercise: workoutExercise.id }));
-	const workoutExerciseSets = await prisma.workoutExerciseSet.createMany({ data: setsInput });
+	await prisma.workoutExerciseSet.createMany({ data: setsInput });
 
 	// arrange: go to Workout Exercise page
 	await page.goto(`workout-exercises/${workoutExercise.id}`);
@@ -26,4 +26,11 @@ test('Use sets from a previous workout', async ({ page }) => {
 	await page.locator('button', { hasText: 'Repeat Previous Workout' }).click();
 
 	// assert: sets appear and have the same values as previous
+	for (const i in setsValues) {
+		for (const property in setsValues[i]) {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			await expect(page.getByText(`${setsValues[i][property]}`)).toBeVisible();
+		}
+	}
 });
