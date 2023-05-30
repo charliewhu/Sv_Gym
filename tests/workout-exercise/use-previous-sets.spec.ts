@@ -10,14 +10,20 @@ test('Use sets from a previous workout', async ({ page }) => {
 		{ weight: 120, reps: 3, rir: 1 }
 	];
 
-	// arrange: db
+	// arrange: past workout
 	const exercise = await prisma.exercise.create({ data: { name: exerciseName } });
+	const prevWorkout = await prisma.workout.create({ data: {} });
+	const prevWorkoutExercise = await prisma.workoutExercise.create({
+		data: { workout: prevWorkout.id, exercise: exercise.id }
+	});
+	const setsInput = setsValues.map((obj) => ({ ...obj, workoutExercise: prevWorkoutExercise.id }));
+	await prisma.workoutExerciseSet.createMany({ data: setsInput });
+
+	// arrange: current workout
 	const workout = await prisma.workout.create({ data: {} });
 	const workoutExercise = await prisma.workoutExercise.create({
 		data: { workout: workout.id, exercise: exercise.id }
 	});
-	const setsInput = setsValues.map((obj) => ({ ...obj, workoutExercise: workoutExercise.id }));
-	await prisma.workoutExerciseSet.createMany({ data: setsInput });
 
 	// arrange: go to Workout Exercise page
 	await page.goto(`workout-exercises/${workoutExercise.id}`);
