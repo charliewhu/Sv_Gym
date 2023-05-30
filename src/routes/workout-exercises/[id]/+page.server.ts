@@ -82,5 +82,42 @@ export const actions = {
 
 		const returnForm = await superValidate(workoutExerciseSetSchema);
 		return { form: returnForm, status: 204 };
+	},
+	previousWorkout: async ({ request }) => {
+		const form = await request.formData();
+		const workoutExerciseId = form.get('workoutExerciseId');
+		const exerciseId = form.get('exerciseId');
+
+		try {
+			const sets = await prisma.workoutExercise.findMany({
+				where: { exercise: Number(exerciseId) },
+				take: 1,
+				skip: 1,
+				orderBy: {
+					workout: 'desc'
+				},
+				include: {
+					workoutExerciseSets: true
+				}
+			});
+
+			const newSets = sets[0].workoutExerciseSets.map((obj) => ({
+				weight: Number(obj.weight),
+				reps: Number(obj.reps),
+				rir: Number(obj.rir),
+				workoutExercise: Number(workoutExerciseId)
+			}));
+
+			await prisma.workoutExerciseSet.createMany({
+				data: newSets
+			});
+		} catch (err) {
+			console.log('could not copy sets');
+			console.log(err);
+			return fail(500, { message: 'could not copy sets' });
+		}
+
+		const returnForm = await superValidate(workoutExerciseSetSchema);
+		return { form: returnForm, status: 204 };
 	}
 };
