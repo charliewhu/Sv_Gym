@@ -5,9 +5,9 @@ test('Use sets from a previous workout', async ({ page }) => {
 	// arrange: variables
 	const exerciseName = 'Test Exercise';
 	const setsValues: { weight: number; reps: number; rir: number }[] = [
-		{ weight: 100, reps: 5, rir: 3 },
-		{ weight: 110, reps: 4, rir: 2 },
-		{ weight: 120, reps: 3, rir: 1 }
+		{ weight: 9, reps: 6, rir: 3 },
+		{ weight: 8, reps: 5, rir: 2 },
+		{ weight: 7, reps: 4, rir: 1 }
 	];
 
 	// arrange: past workout
