@@ -13,7 +13,7 @@
 </script>
 
 <form {action} method="POST" use:enhance class="text-center">
-	<div class="flex justify-evenly mb-4">
+	<div class="grid grid-cols-3 gap-2 mb-4">
 		<div>
 			<label class="label" for="weight">
 				<span class="label-text">Weight</span>
@@ -24,7 +24,7 @@
 				step="0.5"
 				name="weight"
 				placeholder="Weight"
-				class="input input-bordered w-full max-w-xs flex flex-col"
+				class="input input-bordered w-full max-w-xs"
 				bind:value={$form.weight}
 			/>
 		</div>

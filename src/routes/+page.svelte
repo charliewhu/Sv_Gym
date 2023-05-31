@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
 	import ListItem from '$lib/components/ListItem.svelte';
 
 	export let data;
@@ -10,8 +9,10 @@
 	<title>Workouts</title>
 </svelte:head>
 
-<form action={`?/create`} method="POST" use:enhance class="text-center mb-6">
-	<button type="submit" aria-label="startWorkout" class="btn btn-primary">Start New Workout</button>
+<form action={`?/create`} method="POST" use:enhance class="text-center">
+	<button type="submit" aria-label="startWorkout" class="btn btn-primary mb-3">
+		Start New Workout
+	</button>
 </form>
 
 <ul>
