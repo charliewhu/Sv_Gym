@@ -13,7 +13,7 @@
 </script>
 
 <form {action} method="POST" use:enhance class="text-center">
-	<div class="grid grid-cols-3 gap-2 mb-4">
+	<div class="grid grid-cols-3 gap-2 mb-2">
 		<div>
 			<label class="label" for="weight">
 				<span class="label-text">Weight</span>
@@ -55,7 +55,7 @@
 			/>
 		</div>
 	</div>
-	<div class="flex flex-col mb-4">
+	<div class="flex flex-col mb-2">
 		{#if $errors?._errors}
 			{#each $errors._errors as error}
 				<small class="text-error">{error}</small>
